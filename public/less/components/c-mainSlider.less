@@ -49,15 +49,42 @@
 		width: 42px;
 		height: 42px;
 		border-radius: 50%;
-		border: 2px solid @secondary-color;
+		border: 1px solid @secondary-color;
 		z-index: 1;
+		cursor: pointer;
+		
+
+		&:before {
+			content: "";
+			width: 16px;
+			height: 16px;
+			display: block;
+			top: 50%;
+			margin-top: -8px;
+			left: 50%;
+			border: 1px solid @secondary-color;
+			transform: rotateZ(45deg);
+			position: absolute;
+		}
 
 		&--prev {
 			left: 50px;
+
+			&::before {
+				margin-left: -4px;
+				border-right: 0;
+				border-top: 0;
+			}
 		}
 
 		&--next {
 			right: 50px;
+
+			&::before {
+				margin-left: -12px;
+				border-bottom: 0;
+				border-left: 0;
+			}
 		}
 	}
 
