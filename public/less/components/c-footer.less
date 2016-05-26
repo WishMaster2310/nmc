@@ -3,6 +3,7 @@
 
 	&__topline {
 		background: #f8f8f8 url(../images/footerbg.png);
+		padding: 35px 0;
 	}
 
 	&__row {
@@ -14,5 +15,62 @@
 		display: table-cell;
 		vertical-align: top;
 		
+
+		&--1 {
+			width: 245px;
+			padding-right: 20px;
+		}
+	}
+
+	&__license {
+		padding: 35px 0;
+		font-size: 14px;
+		color: #989693;
+		line-height: round(18/14, 3);
+	}
+
+	&__copy {
+		font-size: 14px;
+		margin-bottom: 10px;
+		line-height: 16px;
+	}
+	&__devcopy {
+		font-size: 14px;
+
+	}
+	&__search {
+		position: relative;
+		margin-bottom: 20px;
+
+		&:after {
+			background: data-uri('../images/search.png') no-repeat 50% 50%;
+			content: "";
+			display: block;
+			width: image-width('../images/search.png');
+			height: image-height('../images/search.png');
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			z-index: 1;
+		}
+
+		&-input {
+			height: 32px;
+			width: 100%;
+			background-color: #fff;
+			border: 1px solid #fff;
+			outline: none;
+			font-family: inherit;
+			font-weight: 300;
+			font-size: 14px;
+			padding: 0 15px;
+			border-radius: 16px;
+
+			&:focus {
+				border-color: @primary-color;
+			}
+		}
+
+
 	}
 }
