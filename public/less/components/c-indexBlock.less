@@ -1,0 +1,31 @@
+.c-indexBlock {
+
+	&--news {
+		padding-left: 20px;
+	}
+
+	&--news &__head {
+		padding-bottom: 20px;
+		border-bottom: 1px solid #eeeeee;
+	}
+
+	&__head {
+		margin-bottom: 1.5em;
+		position: relative;
+
+		&-link {
+			position: absolute;
+			top: .35em;
+			right: 0;
+			font-size: 14px;
+			color: @base-color;
+		}
+	}
+
+	&__title {
+		.fontSize(22);
+		font-weight: 300;
+		.firstLetter();
+		text-transform: uppercase;
+	}
+}

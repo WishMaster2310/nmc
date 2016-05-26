@@ -2,6 +2,44 @@
 {% block content %}
 {% include "blocks/mainSlider.html" %}
 {% include "blocks/exchange.html" %}
-<div class="l-container">	
+<div class="l-container">
+	<div class="l-row">
+		<div class="l-col--md-6">
+			<div class="c-indexBlock">
+				<div class="c-indexBlock__head">
+					<h2 class="c-indexBlock__title">Акционерное общество «Национальная управляющая компания»</h2>	
+				</div>
+				<div class="c-indexBlock__content">Результатами, достигнутыми Компанией на сегодняшний день, мы обязаны деятельности по доверительному управлению <a href="#">пенсионными резервами</a> негосударственных <a href="#">пенсионных фондов</a>. Свои дальнейшие успехи мы связываем с предложением новых финансовых услуг нашим партнерам и потенциальным клиентам и с развитием, совершенствованием услуг, предоставляемых негосударственным пенсионным фондам.»</div>	
+			</div>
+		</div>
+		<div class="l-col--md-6">
+			<div class="c-indexBlock c-indexBlock--news">
+				<div class="c-indexBlock__head">
+					<h2 class="c-indexBlock__title">Новости компании</h2>	
+					<a href="#" class="c-indexBlock__head-link">Архив новостей</a>
+				</div>
+				<div class="c-indexBlock__content">
+					<div class="l-row">
+						{%- for item in ctx.news %}
+							{%- if loop.index < 3 %}
+								<div class="l-col--md-6">
+									<div class="c-news">
+										<div class="c-news__date">{{ item.date }}</div>
+										<div class="c-news__title">{{ item.title }}</div>
+										<a href="{{ item.url }}" class="c-btn c-btn--out-border c-news__btn">Подробнее</a>
+									</div>
+								</div>
+							{%- endif %}
+						{%- endfor %}
+						
+					</div>
+					
+				</div>	
+			</div>
+		</div>
+	</div>
+	<a class="c-poster c-poster--vspaced" href="#">
+		<img src="/uploads/poster.jpg" alt="">
+	</a>	
 </div>
 {% endblock %}

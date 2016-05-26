@@ -55,9 +55,7 @@
 			font-size: 14px;
 			text-decoration: none;
 
-			&:hover {
-				color: @primary-color;
-			}
+
 		}
 	}
 
@@ -69,11 +67,12 @@
 
 		a {
 			text-decoration: none;
-			color: inherit;
+			color:  @secondary-color;
 
 			&:hover {
-				color: darken(@primary-color, 5%);
+				color: @link-color;
 			}
+
 		}
 	}
 
@@ -127,6 +126,7 @@
 
 			&:hover {
 				border-color: @primary-color;
+				color: @secondary-color;
 			}
 			
 		}
