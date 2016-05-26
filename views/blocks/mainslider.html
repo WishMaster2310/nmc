@@ -1,0 +1,30 @@
+{%- set SliderData = [{
+	"bgImage": "slider1.jpg",
+	"text": "<h2>Наша цель —</h2> <h1>Ваше финансовое благополучие!</h1> <p>«Национальная управляющая компания» осуществляет профессиональную деятельность по доверительному управлению на рынке ценных бумаг с 2002 года</p>",
+	"url": "#",
+	"btnText": "Подробнее"
+},{
+	"bgImage": "slider2.jpg",
+	"text": "<h2>Ваша цель —</h2> <h1>Ваше финансовое благополучие!</h1> <p>«Национальная управляющая компания» осуществляет профессиональную деятельность по доверительному управлению на рынке ценных бумаг с 2002 года</p>",
+	"url": "#",
+	"btnText": "Подробнее"
+},{
+	"bgImage": "slider1.jpg",
+	"text": "<h2>Наша цель —</h2> <h1>Ваше финансовое благополучие!</h1> <p>«Национальная управляющая компания» осуществляет профессиональную деятельность по доверительному управлению на рынке ценных бумаг с 2002 года</p>",
+	"url": "#",
+	"btnText": "Подробнее"
+}] -%}
+<div class="c-mainSlider" id="mainSlider">
+	{%- for slide in SliderData %}
+		<div class="c-mainSlider__slide" style="background-image: url(/uploads/{{ slide.bgImage }})">
+			<div class="l-container c-mainSlider__container">
+				<div class="c-mainSlider__inner">
+					<div class="c-mainSlider__content">{{ slide.text|safe }}</div>
+					{%- if slide.url %}
+						<div><a href="{{ slide.url }}" class="c-btn">{{ slide.btnText }}</a></div>
+					{%- endif %}
+				</div>
+			</div>
+		</div>
+	{%- endfor %}
+</div>

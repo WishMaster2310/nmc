@@ -1,0 +1,30 @@
+@import '../mixins/grid';
+@import '../mixins/gridframework';
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+.fontSize(@size, @origin: 16em) {
+	font-size: round(@size/@origin, 3)
+}
+
+.firstLetter() {
+	&::first-letter {
+		display: inline-block;
+		vertical-align: baseline;
+		padding: 0 5px;
+		line-height: 1;
+		font-weight: 400;
+		border-radius: 5px;
+		background-color: @primary-color;
+	}
+}

@@ -85,7 +85,7 @@ gulp.task('default', function() {
     server.start();
 
     //use gulp.watch to trigger server actions(notify, start or stop) 
-    gulp.watch(['views/**/*.html', 'views/*.html', './datasource/data.json', './app.js', 'routes/**/*.js'], function() {
+    gulp.watch(['views/blocks/*.html', 'views/*.html', './datasource/data.json', './app.js', 'routes/**/*.js'], function() {
       server.start.bind(server)()
     });
 
@@ -143,4 +143,4 @@ gulp.task('export', function() {
 });
 
 
-gulp.task('publish', ['export', 'compress', 'less:prod']);
+gulp.task('publish', ['compress', 'less:prod']);

@@ -1,36 +1,32 @@
 <!doctype html>
-<!--[if IE 7]>
-<html class="ie7 lt-ie10 lt-ie9 lt-ie8 no-js" lang="ru"><![endif]-->
-<!--[if IE 8]>
-<html class="ie8 lt-ie10 lt-ie9 no-js" lang="ru"><![endif]-->
-<!--[if IE 9 ]>
-<html class="ie9 lt-ie10 no-js" lang="ru"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="ru">
-<!--<![endif]-->
+<html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Заголовок</title>
+  <title>{{ title }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <meta content="telephone=no" name="format-detection">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="HandheldFriendly" content="true">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
   <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-  <script>
-  (function(H) {
-    H.className = H.className.replace(/\bno-js\b/, 'js')
-  })(document.documentElement)
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
-	{%- if isExport %}
-    <script src="/javascripts/app.min.js"></script>
-		{%- else %}
-    <script src="/javascripts/app.js"></script>
-	{%- endif %}
+  <meta name="theme-color" content="#41a600" />
+  <meta name="msapplication-navbutton-color" content="#41a600">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#41a600">
 </head>
 <body>
-  {% block content %}{% endblock content %}
-  
+  {% include "blocks/header.html" %}
+  {% block content %}{% endblock %}
+  {% include "blocks/footer.html" %}
+
+  {%- if isExport %}
+    <script src="/javascripts/app.min.js"></script>
+    {%- else %}
+    <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/dist/slick.min.js"></script>
+  {%- endif %}
+
+  {%- block scripts %}{% endblock %}
 </body>

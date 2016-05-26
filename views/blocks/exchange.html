@@ -1,0 +1,35 @@
+{%- set Exchenges = [{
+	"label": "РТС",
+	"status": "decreases",
+	"price1": "1.0918",
+	"price2": "1.0921"
+},{
+	"label": "ММВБ",
+	"status": "increases",
+	"price1": "1.0918",
+	"price2": "1.0921"
+},{
+	"label": "USD ЦБ РФ",
+	"status": "decreases",
+	"price1": "1.0918",
+	"price2": "1.0921"
+},{
+	"label": "EUR ЦБ РФ",
+	"status": "increases",
+	"price1": "1.0918",
+	"price2": "1.0921"
+}] -%}
+<div class="c-exchange">
+	<div class="l-container">
+		<div class="c-exchange__row">
+			{%- for item in Exchenges %}
+			<div class="c-exchange__col">
+				<div class="c-exchange__item">
+					<div class="c-exchange__label">{{ item.label }}</div>
+					<div class="c-exchange__counter c-exchange__counter--{{ item.status }}">{{ item.price1 }}&nbsp;|&nbsp;{{ item.price2 }}</div>
+				</div>
+			</div>	
+			{% endfor -%}
+		</div>
+	</div>
+</div>
