@@ -1,0 +1,19 @@
+<div class="c-asideMenu">
+	{% for item in ctx.asideMenu %}
+		{% if item.type == "link" %}
+			<a href="{{ item.url }}" class="c-asideMenu__item {% if ASIDEACTIVE == loop.index %}c-asideMenu__item--active{% endif %}">
+			<span class="c-asideMenu__item-caption ">{{ item.caption }}</span></a>
+			{% else %}
+			<div class="c-asideMenu__item {% if ASIDEACTIVE == loop.index %}c-asideMenu__item--active{% endif %}">
+				<span class="c-asideMenu__item-caption js-asideMenuToggle">{{ item.caption }}</span>
+				<ul class="c-asideMenu__sublist">
+					{% for subItem in item.items %}
+						<li class="c-asideMenu__sublist-item">
+							<a href="{{ subItem.url }}" class="c-asideMenu__sublist-link">{{ subItem.caption }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>

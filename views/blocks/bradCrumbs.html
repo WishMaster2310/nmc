@@ -1,0 +1,13 @@
+
+<ul class="c-breadCrumbs">
+	<li class="c-breadCrumbs__item">
+		<a href="/">Главная</a>
+	</li>
+	{%- for item in PAGEPATH %}
+		{%- if loop.last %}
+		<li class="c-breadCrumbs__item">{{ item }}</li>
+		{%- else %}
+		<li class="c-breadCrumbs__item"><a href="#">{{ item }}</a></li>
+		{%- endif %}
+	{%- endfor %}
+</ul>

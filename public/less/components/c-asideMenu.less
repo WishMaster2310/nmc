@@ -1,0 +1,81 @@
+.c-asideMenu {
+	background-color: #eeeeee;
+	padding: 16px 0;
+	border-radius: 8px;
+	margin-bottom: round(25/16em, 3);
+
+	&__sublist {
+		list-style-type: none;
+		margin: 0;
+		padding: 10px 15px;
+
+		&-item {
+			margin-bottom: 5px;
+			padding-left: 12px;
+			position: relative;
+
+			&:before {
+				content: "";
+				display: block;
+				width: 5px;
+				height: 5px;
+				background-color: @primary-color;
+				position: absolute;
+				left: 0;
+				top: .25em;
+			}
+		}
+
+		&-link {
+			color: @base-color;
+			font-size: 13px;
+			line-height: 16px;
+			font-weight: 300;
+			text-transform: uppercase;
+			display: block;
+			
+		}
+	}
+
+	&__item {
+		display: block;
+		text-decoration: none;
+		outline: none;
+
+		&-caption {
+			display: block;
+			padding: 8px 15px;
+			color: @base-color;
+			font-weight: 600;
+			text-transform: uppercase;
+			font-size: 14px;
+			cursor: pointer;
+			position: relative;
+			transition: background .3s ease-in;
+
+			&:after {
+				content: "";
+				position: absolute;
+				right: 15px;
+				left: 15px;
+				height: 0;
+				bottom: 0px;
+				border-bottom: 1px solid #fff;
+				display: block;
+			}
+		}
+
+		&:hover &-caption {
+			background-color: @primary-color;
+		}
+
+		&:hover &-caption:after,
+		&--active  &-caption:after {
+			display: none;
+		}
+
+		&--active  &-caption {
+			background-color: #f8f8f8 !important;
+		}
+	}
+}

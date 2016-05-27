@@ -1,0 +1,24 @@
+.c-page {
+	.clearfix();
+	margin: 45px auto;
+	min-height: 400px;
+
+	&__aside {
+		float: left;
+		width: 230px;
+	}
+
+	&__main {
+		margin-left: 260px;
+		
+	}
+
+	&__title {
+		.fontSize(28);
+		text-transform: uppercase;
+		.firstLetter();
+		line-height: 1;
+		margin-bottom: round(30/28em, 3);
+		color: @secondary-color;
+	}
+}

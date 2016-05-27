@@ -1,0 +1,39 @@
+
+.c-wysiwyg {
+	font-size: @base-fontSize;
+
+	p {
+		margin: round(25/16em, 3) 0;
+	}
+
+	dl {
+		padding-left: round(24/16em, 3);
+
+		dt {
+			.fontSize(15);
+			font-weight: 600;
+			text-transform: uppercase;
+			color: @secondary-color;
+			margin-bottom: round(10/15em, 3);
+			margin-top: round(40/15em, 3);
+			position: relative;
+
+			&:before {
+				content: "";
+				display: block;
+				width: round(12/15em, 3);
+				height: round(12/15em, 3);
+				border: 2px solid @primary-color;
+				border-radius: 50%;
+				position: absolute;
+				left: round(-24/15em, 3);
+				top: .2em;
+			}
+		}
+
+		dd {
+			margin-bottom: round(40/16em, 3);
+		}
+	}
+
+}

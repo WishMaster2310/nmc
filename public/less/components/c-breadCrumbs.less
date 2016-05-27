@@ -1,0 +1,37 @@
+.c-breadCrumbs {
+	list-style-type: none;
+	margin: 0 0 20px 0;
+	font-size: 0;
+
+	&__item {
+		display: inline-block;
+		vertical-align: top;
+		max-width: 150px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 15px;
+		color: @link-color;
+
+		&:before {
+			content: "/";
+			display: inline-block;
+			margin-right: 5px;
+			margin-left: 5px;
+			color: @secondary-color;
+		}
+
+		&:first-child:before {
+			display: none;
+			
+		}
+
+		a {
+			color: @secondary-color;
+
+			&:hover {
+				color: @link-color;
+			}
+		}
+	}
+}
