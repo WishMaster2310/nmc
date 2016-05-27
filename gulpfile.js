@@ -119,9 +119,9 @@ gulp.task('export', function() {
     watch: false
   });
   
-  images = new RegExp('src=+([\'\"])\/images\/(.[^\'\"]+)', 'g');
-  scripts = new RegExp('src=+([\'\"])\/javascripts\/(.[^\'\"]+)', 'g');
-  styles = new RegExp('src=+([\'\"])\/stylesheets\/(.[^\'\"]+)', 'g');
+  //images = new RegExp('src=+([\'\"])\/images\/(.[^\'\"]+)', 'g');
+ // scripts = new RegExp('src=+([\'\"])\/javascripts\/(.[^\'\"]+)', 'g');
+  //styles = new RegExp('src=+([\'\"])\/stylesheets\/(.[^\'\"]+)', 'g');
 
   gulp.src(['views/*.html', '!views/__*.html'])
     .pipe(nunjucksRender({
@@ -132,11 +132,11 @@ gulp.task('export', function() {
       indent_char: ' ',
       indent_size: 2
     }))
-    .pipe(replace(images, 'src=$1@File("/files/images/$2")'))
-    .pipe(replace(scripts, 'src=$1@File("/files/js/$2")'))
-    .pipe(replace(styles, 'src=$1@File("/files/css/$2")'))
+   // .pipe(replace(images, 'src=$1@File("/files/images/$2")'))
+    //.pipe(replace(scripts, 'src=$1@File("/files/js/$2")'))
+    //.pipe(replace(styles, 'src=$1@File("/files/css/$2")'))
     .pipe(gulp.dest('export'));
 });
 
 
-gulp.task('publish', ['compress', 'less:prod']);
+gulp.task('publish', ['export', 'compress', 'less:prod']);
