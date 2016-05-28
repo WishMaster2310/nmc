@@ -9,9 +9,9 @@
 				</div>
 				<div class="c-header__col c-header__col--nav">
 					<nav class="c-header__nav">
-						<a href="#" class="c-header__nav-item">О компании</a>
-						<a href="#" class="c-header__nav-item">Контакты</a>
-						<a href="#" class="c-header__nav-item">Пункты продаж</a>
+						<a href="/about" class="c-header__nav-item">О компании</a>
+						<a href="/contacts" class="c-header__nav-item">Контакты</a>
+						<a href="/points" class="c-header__nav-item">Пункты продаж</a>
 					</nav>
 				</div>
 				<div class="c-header__col c-header__col--contacts">
@@ -29,10 +29,9 @@
 	<div class="c-header__navline">
 		<div class="l-container">
 			<nav class="c-header__menu">
-				<a href="" class="c-header__menu-item">Частным клиентам</a>
-				<a href="" class="c-header__menu-item">Корпоративным клиентам</a>
-				<a href="" class="c-header__menu-item">Раскрытие информации</a>
-				<a href="" class="c-header__menu-item">Новости</a>
+			{%- for item in  ctx.headerNav -%}
+				<a href="{{ item.url }}" class="c-header__menu-item {% if HEADER_ACTIVE == loop.index %}c-header__menu-item--active{% endif %}">{{ item.caption }}</a>
+			{%- endfor -%}
 			</nav>
 		</div>
 	</div>

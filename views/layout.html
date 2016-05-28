@@ -11,9 +11,10 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
-  <meta name="theme-color" content="#41a600" />
-  <meta name="msapplication-navbutton-color" content="#41a600">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#41a600">
+  {%- block HEAD %}{% endblock -%}
+  <meta name="theme-color" content="#f8ce13" />
+  <meta name="msapplication-navbutton-color" content="#f8ce13">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#f8ce13">
   <!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
@@ -25,6 +26,7 @@
   {%- if isExport %}
     <script src="/javascripts/app.min.js"></script>
     {%- else %}
+    <script src="//localhost:35729/livereload.js"></script>
     <script src="/javascripts/app.js"></script>
     <script src="/javascripts/dist/slick.min.js"></script>
   {%- endif %}

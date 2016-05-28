@@ -1,0 +1,123 @@
+{%- set TITLE = 'Контакты' -%}
+{%- set MENU = ctx.aboutMenu -%}
+{%- set PAGEPATH = ["О компании", TITLE] -%}
+{%- set TEAM = [] -%}
+{%- set ASIDEACTIVE = 6 -%}
+{%- extends "layout.html" -%}
+{%- block HEAD %}<script src="https://api-maps.yandex.ru/2.0/?load=package.standard,package.controls&lang=ru-RU" type="text/javascript"></script>{% endblock -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="/points">
+			<img src="/uploads/poster3.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<article class="c-wysiwyg">
+			<p>Адрес: 111123, город Москва, улица Плеханова, дом 4 <br>Телефон: <a href="tel:+74956401711">+7 (495) 640−17−11</a> <br>Факс: +7 (495) 640−75−11 <br>E-mail: <a href="mailto:mail@namc.ru">mail@namc.ru</a></p>
+		</article>
+		<div class="c-map">
+			<div class="c-map__inner" id="nmcYandexMap"></div>
+		</div>
+		<h4 class="c-h4">Обратная связь</h4>
+		<form action="/" method="POST" class="c-form" id="nmcForm">
+			<div class="l-row">
+				<div class="l-col--md-4"><label for="nmcFormServiceName">Наименование ПИФа/услуги<span class="u-red">*</span></label></div>
+				<div class="l-col--md-6">
+					<select class="c-form__control" name="serviceName" id="nmcFormServiceName" required>
+						<option value="1">Сириус</option>
+						<option value="1">Канопус</option>
+						<option value="1">Вега</option>
+						<option value="1">Полярная звезда</option>
+					</select>
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"><label class="c-form__label" for="nmcFormUserName">Ваше имя<span class="u-red">*</span></label></div>
+				<div class="l-col--md-6">
+					<input type="text" class="c-form__control" required name="name" id="nmcFormUserName">
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"><label class="c-form__label" for="nmcFormTel">Ваш телефон</label></div>
+				<div class="l-col--md-6">
+					<input type="tel" class="c-form__control" name="tel" id="nmcFormTel">
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"><label class="c-form__label" for="nmcFormEmail">E-mail<span class="u-red">*</span></label></div>
+				<div class="l-col--md-6">
+					<input type="email" class="c-form__control" required name="email" id="nmcFormEmail">
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"><label class="c-form__label" for="nmcFormMsg">Сообщение</label></div>
+				<div class="l-col--md-6">
+					<textarea  class="c-form__control  c-form__control--area" name="msg" id="nmcFormMsg"></textarea>
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"><label class="c-form__label" for="nmcFormCapcha">Введите символы<span class="u-red">*</span></label></div>
+				<div class="l-col--md-6">
+					<div class="l-row">
+						<div class="l-col--md-4">
+							<div class="c-form__capchaImg">
+								<img src="/uploads/capcha.jpg" alt="capcha">
+							</div>
+						</div>
+						<div class="l-col--md-6"><input type="text" class="c-form__control" name="capcha" id="nmcFormCapcha"></div>
+					</div>
+				</div>
+			</div>
+			<div class="l-row">
+				<div class="l-col--md-4"></div>
+				<div class="l-col--md-8">
+					<button type="submit" class="c-btn">Отправить</button>
+				</div>
+			</div>
+		</form>
+	</main>
+</div>
+<script>
+	$(function() {
+		var myMap;
+    ymaps.ready(init);
+
+    function init() {
+
+      var myMap = new ymaps.Map('nmcYandexMap', {
+          center: [55.755952,37.757925],
+          zoom: 17
+        }, {
+          suppressMapOpenBlock: true
+        }),
+
+        myPlacemark = new ymaps.Placemark([55.755952,37.757925], {
+        	balloonContent: '{{ ctx.companyName }}'
+        }, {
+          iconLayout: 'default#image',
+          iconImageHref: './images/map-pin.png',
+          iconImageSize: [30, 39],
+          // Смещение левого верхнего угла иконки относительно
+          // её "ножки" (точки привязки).
+          iconImageOffset: [-15, -40]
+        });
+
+          myMap.controls
+	        // Кнопка изменения масштаба.
+	        .add('zoomControl', { left: 5, top: 5 })
+	        // Список типов карты
+	        .add('typeSelector')
+	        // Стандартный набор кнопок
+	        .add('mapTools', { left: 35, top: 5 });
+
+      myMap.geoObjects.add(myPlacemark);
+    }
+
+	});
+</script>
+{%- endblock %}
+

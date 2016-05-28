@@ -1,0 +1,38 @@
+.c-listing {
+	padding-left: round(24/16em, 3);
+	
+	&__item {
+		margin-bottom: round(40/16em, 3);
+		margin-top: round(40/16em, 3);
+	}
+
+	&__title {
+		.fontSize(15);
+		font-weight: 600;
+		text-transform: uppercase;
+		color: @secondary-color;
+		margin-bottom: round(10/15em, 3);
+		position: relative;
+
+		a {
+			color: inherit;
+			transition: color .2s ease-in-out;
+			&:hover {
+				color: @link-color;
+
+			}
+		}
+
+		&:before {
+			content: "";
+			display: block;
+			width: round(12/15em, 3);
+			height: round(12/15em, 3);
+			border: 2px solid @primary-color;
+			border-radius: 50%;
+			position: absolute;
+			left: round(-24/15em, 3);
+			top: .2em;
+		}
+	}
+}

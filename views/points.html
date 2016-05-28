@@ -1,0 +1,41 @@
+{%- set TITLE = 'Пункты продаж' -%}
+{%- set MENU = ctx.asideMenu -%}
+{%- set PAGEPATH = [TITLE] -%}
+{%- set CITIES = ["Москва", "Санкт-Петербург", "Казань" ,"Екатеринбург", "Ростов-на-Дону", "Нижний Новгород", "Краснодар", "Воронеж", "Челябинск", "Астрахань"] -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="/points">
+			<img src="/uploads/poster4.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<div class="c-accordion">
+			{%- for city in CITIES %}
+			<div class="c-accordion__item {% if loop.index == 1  %}c-accordion__item--active{% endif -%}">
+				<div class="c-accordion__label">{{ city }}</div>
+				<div class="c-accordion__content" {% if loop.index == 1  %}style="display: block"{% endif -%}>
+					<div class="c-mediaList">
+					{%- for item in [1, 2, 3] -%}
+						<div class="c-mediaList__item">
+							<div class="c-point">
+								<div class="c-point__title">Название пункта продаж</div>
+								<div><span class="u-gray">Адрес:</span> Санкт-Петербург, ул. Ленинна, д. 3</div>
+								<div><span class="u-gray">Режим работы: пн.-пт.:</span>  с 10:00 до 20:00</div>
+								<div>Контактный телефон: +7 (812) 560-48-56</div>
+							</div>
+						</div>
+					{%- endfor -%}
+					</div>
+				</div>
+			</div>
+				
+			{%- endfor %}
+		</div>	
+	</main>
+</div>
+{%- endblock %}

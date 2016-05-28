@@ -1,19 +1,24 @@
 <div class="c-asideMenu">
-	{% for item in ctx.asideMenu %}
-		{% if item.type == "link" %}
-			<a href="{{ item.url }}" class="c-asideMenu__item {% if ASIDEACTIVE == loop.index %}c-asideMenu__item--active{% endif %}">
-			<span class="c-asideMenu__item-caption ">{{ item.caption }}</span></a>
-			{% else %}
+	{%- for item in MENU %}
+		{%- set rootIndex = loop.index -%}
+		{%- if item.type == "link" -%}
 			<div class="c-asideMenu__item {% if ASIDEACTIVE == loop.index %}c-asideMenu__item--active{% endif %}">
-				<span class="c-asideMenu__item-caption js-asideMenuToggle">{{ item.caption }}</span>
+			<a  href="{{ item.url }}"  class="c-asideMenu__item-caption ">{{ item.caption }}</a></div>
+			{%- else -%}
+			<div class="c-asideMenu__item {% if ASIDEACTIVE == rootIndex %}c-asideMenu__item--active{% endif %}">
+				<a href="{{ item.url }}" class="c-asideMenu__item-caption js-openMenu">{{ item.caption }}</a>
 				<ul class="c-asideMenu__sublist">
-					{% for subItem in item.items %}
-						<li class="c-asideMenu__sublist-item">
+					{%- for subItem in item.items -%}
+						<li class="c-asideMenu__sublist-item {% if ASIDEACTIVE == rootIndex and ASIDESUBACTIVE == loop.index  %}c-asideMenu__sublist-item--active{% endif %}">
 							<a href="{{ subItem.url }}" class="c-asideMenu__sublist-link">{{ subItem.caption }}</a>
+							{%- if subItem.items %} <ul>{% for i in subItem.items %}
+								<li><a href="{{ i.url }}">{{ i.caption }}</a></li>
+							{%- endfor %}</ul> 
+							{%- endif %}
 						</li>
-					{% endfor %}
+					{%- endfor %}
 				</ul>
 			</div>
-		{% endif %}
-	{% endfor %}
+		{%- endif %}
+	{%- endfor %}
 </div>

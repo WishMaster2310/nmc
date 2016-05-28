@@ -1,0 +1,55 @@
+.c-media {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	margin-bottom: round(30/16em, 3);
+
+	&__imgBox {
+		display: table-cell;
+		vertical-align: top;
+		width: 70px;
+
+		img {
+			display: block;
+			width: 100%;
+			border-radius: 6px;
+			border: 1px solid #eeeeee;
+		}
+		
+	}
+
+	&__data {
+		display: table-cell;
+		vertical-align: top;
+		padding-left: 16px;
+
+		
+	}
+
+	&List {
+		font-size: 0;
+		margin-left: -3%;
+
+		&__item {
+			font-size: @base-fontSize;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 0 round(30/16em, 3) 3%;
+			width: 47%;
+			border-bottom: 1px dashed #e8e8e8;
+			padding-bottom: round(30/16em, 3);
+			
+			// disabled border of last 2 elements
+			&:last-child,
+			&:nth-last-child(2) {
+				border-bottom-color: transparent;
+				padding-bottom: 0;
+			}
+
+			.c-point,
+			.c-media {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

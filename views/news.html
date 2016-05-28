@@ -1,0 +1,67 @@
+{%- set TITLE = 'Новости' -%}
+{%- set HEADER_ACTIVE = 4 -%}
+{%- set MENU = ctx.aboutMenu -%}
+{%- set PAGEPATH = [TITLE] -%}
+{%- set NEWS = [
+	{
+		"date": "10 февраля 2016",
+		"title": "Изменение фирменного наименования, места нахождения, номеров телефонов и факса",
+		"shortText": "",
+		"url": "#"
+	},
+	{
+		"date": "03 февраля 2016",
+		"title": "По итогам открытого конкурса ЗАО «НУК» будут переданы в доверительное управление",
+		"shortText": "",
+		"url": "#"
+	},
+	{
+		"date": "10 февраля 2016",
+		"title": "Изменение фирменного наименования, места нахождения, номеров телефонов и факса",
+		"shortText": "",
+		"url": "#"
+	},
+	{
+		"date": "03 февраля 2016",
+		"title": "Рейтинговое агентство «Эксперт РА» опубликовало рэнкинг «Крупнейшие УК по объему активов эндаумент-фондов и фондов целевого капитала» за 1 квартал 2013 года.",
+		"shortText": "",
+		"url": "#"
+	},
+	{
+		"date": "03 февраля 2016",
+		"title": "НП «РСОПАУ» — одна из первых зарегистрированных саморегулируемых организаций арбитражных управляющих. В своей работе «РСОПАУ» руководствуется принципом информационной открытости. ",
+		"shortText": "",
+		"url": "#"
+	},{
+		"date": "10 февраля 2016",
+		"title": "Изменение фирменного наименования, места нахождения, номеров телефонов и факса",
+		"shortText": "",
+		"url": "#"
+	}
+] -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="#">
+			<img src="/uploads/poster3.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<div class="c-news__list">
+			{%- for item in NEWS %}
+			<div class="c-news__item">
+				<div class="c-news">
+					<div class="c-news__date">{{ item.date }}</div>
+					<div class="c-news__title">{{ item.title }}</div>
+					<a href="{{ item.url }}" class="c-btn c-btn--out-border c-news__btn">Подробнее</a>
+				</div>
+			</div>
+			{%- endfor %}
+		</div>
+	</main>
+</div>
+{%- endblock %}

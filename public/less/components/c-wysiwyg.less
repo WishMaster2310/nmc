@@ -36,4 +36,46 @@
 		}
 	}
 
+	h4 {
+		text-transform: uppercase;
+		font-weight: 600;
+		margin: round(25/16em, 3) 0;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: round(25/16em, 3) 0;
+		padding: 0;
+
+		li {
+			padding-left: .5em;
+			display: block;
+			position: relative;
+
+			&:before {
+				content: "\2022";
+				position: absolute;
+				left: -.5em;
+				top: .12em;
+				color: @primary-color;
+				
+			}
+		}
+	}
+
+	hr {
+		margin: round(25/16em, 3) 0;
+		border: 0;
+		border-bottom: 1px solid #e8e8e8; 	
+	}
+
+	b, strong {
+		font-weight: 600;
+	}
+
+	ol {
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+
 }

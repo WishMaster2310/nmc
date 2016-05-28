@@ -1,0 +1,30 @@
+{%- set TITLE = 'Список страниц' -%}
+{%- set MENU = ctx.asideMenu -%}
+{%- set PAGEPATH = [TITLE] -%}
+{%- set CITIES = ["Москва", "Санкт-Петербург", "Казань" ,"Екатеринбург", "Ростов-на-Дону", "Нижний Новгород", "Краснодар", "Воронеж", "Челябинск", "Астрахань"] -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="/points">
+			<img src="/uploads/poster4.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<article class="c-wysiwyg">
+			<ol>
+				{% for item in PAGES %}
+					{% if item.name != '__page_list.html' and item.name != 'error.html'  %}
+					<li><a href="/{{ item.url }}">{{ item.name }}</a></li>
+						
+					{% endif %}
+				{% endfor %}
+			</ol>
+		</article>
+
+	</main>
+</div>
+{%- endblock %}

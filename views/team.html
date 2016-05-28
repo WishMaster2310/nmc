@@ -1,0 +1,65 @@
+{%- set TITLE = 'Команда' -%}
+{%- set MENU = ctx.aboutMenu -%}
+{%- set PAGEPATH = ["О компании", TITLE] -%}
+{%- set TEAM = [
+	{
+		"name": "Иванов Сергей Иванович",
+		"post": "Генеральный директор",
+		"bio": "Для этого необходимы глубокое знание рынка и опыт работы, которые приобретаются годами.",
+		"img": "team1.jpg"	
+	},
+	{
+		"name": "Иванов Сергей Иванович",
+		"post": "Генеральный директор",
+		"bio": "Для этого необходимы глубокое знание рынка и опыт работы, которые приобретаются годами.",
+		"img": "team2.jpg"	
+	},
+	{
+		"name": "Смирнова Анна Владимировна",
+		"post": "Главный бухгалтер",
+		"bio": "Для этого необходимы глубокое знание рынка и опыт работы, которые приобретаются годами.",
+		"img": "team3.jpg"	
+	},
+	{
+		"name": "Смирнова Анна Владимировна",
+		"post": "Главный бухгалтер",
+		"bio": "Для этого необходимы глубокое знание рынка и опыт работы, которые приобретаются годами.",
+		"img": "team4.jpg"	
+	},
+	{
+		"name": "Иванов Сергей Иванович",
+		"post": "Генеральный директор",
+		"bio": "Для этого необходимы глубокое знание рынка и опыт работы, которые приобретаются годами.",
+		"img": "team5.jpg"	
+	}
+] -%}
+{%- set ASIDEACTIVE = 3 -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="#">
+			<img src="/uploads/poster2.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<ul class="c-vcards">
+			{%- for person in TEAM -%}
+			<li class="c-vcards__item">
+				<div class="c-vcards__photoBox">
+					<img src="/uploads/{{ person.img }}" alt="{{ person.name }}">
+				</div>
+				<div class="c-vcards__data">
+					<div class="c-vcards__name">{{ person.name }}</div>
+					<div class="c-vcards__post">{{ person.post }}</div>
+					<div class="c-vcards__bio">{{ person.bio }}</div>
+				</div>
+			</li>
+			{%- endfor -%}
+		</ul>
+	</main>
+</div>
+{%- endblock %}

@@ -85,11 +85,10 @@ gulp.task('default', function() {
     server.start();
 
     //use gulp.watch to trigger server actions(notify, start or stop) 
-    gulp.watch(['views/blocks/*.html', 'views/*.html', './datasource/data.json', './app.js', 'routes/**/*.js'], function() {
-     server.notify.apply(server, [file]);
+    gulp.watch(['views/blocks/*.html','public/stylesheets/*.css', 'views/*.html', './datasource/data.json', './app.js', 'routes/**/*.js'], function(file) {
+        server.start.bind(server)();
+        server.notify.apply(server, [file]);
     });
-
-//    gulp.watch('bin/www', ); //restart my server 
 
     gulp.watch(['public/less/*.less', 'public/less/**/*.less'], ['less:dev']);
     gulp.watch(['public/__icons/*.png'], ['sprites']);

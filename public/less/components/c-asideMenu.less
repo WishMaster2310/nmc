@@ -5,6 +5,7 @@
 	margin-bottom: round(25/16em, 3);
 
 	&__sublist {
+		display: none;
 		list-style-type: none;
 		margin: 0;
 		padding: 10px 15px;
@@ -23,6 +24,31 @@
 				position: absolute;
 				left: 0;
 				top: .25em;
+			}
+
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+
+			}
+
+			li {
+				font-size: 14px;
+				position: relative;
+
+				&:before {
+					content: "\2022";
+					color: #999998 !important;
+				}
+
+				a {
+					color: @base-color;
+
+					&:hover {
+						color: @link-color;
+					}
+				}
 			}
 		}
 
@@ -44,7 +70,7 @@
 
 		&-caption {
 			display: block;
-			padding: 8px 15px;
+			padding: 7px 14px;
 			color: @base-color;
 			font-weight: 600;
 			text-transform: uppercase;
@@ -56,12 +82,16 @@
 			&:after {
 				content: "";
 				position: absolute;
-				right: 15px;
-				left: 15px;
+				right: 14px;
+				left: 14px;
 				height: 0;
 				bottom: 0px;
 				border-bottom: 1px solid #fff;
 				display: block;
+			}
+
+			&:hover {
+				color: @base-color;
 			}
 		}
 
@@ -77,5 +107,9 @@
 		&--active  &-caption {
 			background-color: #f8f8f8 !important;
 		}
+	}
+
+	&__item--active &__sublist {
+		display: block;
 	}
 }

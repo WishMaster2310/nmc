@@ -31,22 +31,45 @@
 		{
 			"caption": "Паевые фонды",
 			"type": "list",
+			"url": "/sharedfunds",
 			"items": [
 				{
 					"caption": "ОПИФ",
-					"href": "#"
+					"url": "/opf",
+					"type": "list",
+					"items": [
+						{
+							"caption": "Сириус",
+							"url": "#"
+						},
+						{
+							"caption": "Канопус",
+							"url": "#"
+						},
+						{
+							"caption": "Вега",
+							"url": "#"
+						},
+						{
+							"caption": "Полярная звезда",
+							"url": "#"
+						}
+					]
 				},
 				{
 					"caption": "ЗПИФ",
-					"href": "#"
+					"url": "#",
+					"type": "link"
 				},
 				{
 					"caption": "ИПИФ",
-					"href": "#"
+					"url": "#",
+					"type": "link"
 				},
 				{
 					"caption": "Отчетность и документы Специализированного депозитария",
-					"href": "#"
+					"url": "#",
+					"type": "link"
 				}
 			]
 		},
@@ -74,6 +97,56 @@
 			"caption": "Управление активами НПФ",
 			"type": "link",
 			"url": "#"
+		}
+	],
+	"aboutMenu": [
+		{
+			"caption": "Миссия",
+			"type": "link",
+			"url": "#"
+		},
+		{
+			"caption": "История",
+			"type": "link",
+			"url": "#"
+		},
+		{
+			"caption": "Команда",
+			"type": "link",
+			"url": "/team"
+		},
+		{
+			"caption": "Рейтинги",
+			"type": "link",
+			"url": "#"
+		},
+		{
+			"caption": "Лицензии",
+			"type": "link",
+			"url": "#"
+		},
+		{
+			"caption": "Контакты",
+			"type": "link",
+			"url": "/contacts"
+		}
+	],
+	"headerNav": [
+		{
+			"caption": "Частным клиентам",
+			"url": "#"
+		},
+		{
+			"caption": "Корпоративным клиентам",
+			"url": "#"
+		},
+		{
+			"caption": "Раскрытие информации",
+			"url": "#"
+		},
+		{
+			"caption": "Новости",
+			"url": "/news"
 		}
 	]
 }
