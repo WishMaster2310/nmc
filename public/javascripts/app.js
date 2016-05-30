@@ -20,4 +20,8 @@ $(function () {
 			$(content).stop(true, true).slideUp(275)
 		}
 	});
+
+	$('.c-docs__item--withModal').on('click', function(e) {
+		e.preventDefault()
+	})
 });

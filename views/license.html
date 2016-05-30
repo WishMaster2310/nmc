@@ -1,0 +1,33 @@
+{%- set TITLE = 'Лицензии' -%}
+{%- set MENU = ctx.aboutMenu -%}
+{%- set PAGEPATH = ['О компании', TITLE] -%}
+{%- set ASIDEACTIVE = 5 -%}
+{%- set DOCS = [
+	{"name": "Название лицензии", "thumb": "lic001-thumbs.jpg", "img": "lic001.jpg"}, {"name": "Название лицензии", "thumb": "lic002-thumbs.jpg", "img": "lic002.jpg"}, {"name": "Название лицензии", "thumb": "lic003-thumbs.jpg", "img": "lic003.jpg"}, {"name": "Название лицензии", "thumb": "lic004-thumbs.jpg", "img": "lic004.jpg"}, {"name": "Название лицензии", "thumb": "lic005-thumbs.jpg", "img": "lic005.jpg"}, {"name": "Название лицензии", "thumb": "lic006-thumbs.jpg", "img": "lic006.jpg"}, {"name": "Название лицензии", "thumb": "lic002-thumbs.jpg", "img": "lic002.jpg"}, {"name": "Название лицензии", "thumb": "lic008-thumbs.jpg", "img": "lic008.jpg"}, {"name": "Название лицензии", "thumb": "lic009-thumbs.jpg", "img": "lic009.jpg"}, {"name": "Название лицензии", "thumb": "lic010-thumbs.jpg", "img": "lic0010.jpg"}, {"name": "Название лицензии", "thumb": "lic010-thumbs.jpg", "img": "lic010.jpg"} ] -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="#">
+			<img src="/uploads/poster3.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<div class="c-docs">
+			{%- for item in DOCS -%}
+			<a class="c-docs__item c-docs__item--withModal" href="/uploads/{{ item.img }}">
+				<div class="c-docs__imgBox">
+					<img src="/uploads/{{ item.thumb }}" alt="{{ item.name }}" class="c-docs__img">
+				</div>
+				<div class="c-docs__data">
+					<div class="c-docs__title">{{ item.name }}</div>
+				</div>
+			</a>
+			{%- endfor %}
+		</div>
+	</main>
+</div>
+{%- endblock %}

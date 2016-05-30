@@ -59,6 +59,10 @@ router.get('/contacts', function(req, res, next) {
   res.render('contacts', { ctx: global.siteDB});
 });
 
+router.get('/license', function(req, res, next) {
+  res.render('license', { ctx: global.siteDB});
+});
+
 router.get('/pages', function(req, res, next) {
   res.render('__page_list', { ctx: global.siteDB, PAGES: global.PAGELIST });
 });
