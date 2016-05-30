@@ -21,7 +21,7 @@ $(function () {
 		}
 	});
 
-	$('.c-docs__item--withModal').on('click', function(e) {
-		e.preventDefault()
+	$('.c-docs__item--withModal').fancybox({
+		
 	})
 });
