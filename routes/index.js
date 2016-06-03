@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var fs = require('fs');
+var pages = fs.readdirSync('./views/');
 /* GET home page. */
 function getPages () {
 	global.PAGELIST = []
@@ -62,6 +63,11 @@ router.get('/contacts', function(req, res, next) {
 router.get('/license', function(req, res, next) {
   res.render('license', { ctx: global.siteDB});
 });
+
+router.get('/sirius', function(req, res, next) {
+  res.render('sirius', { ctx: global.siteDB});
+});
+
 
 router.get('/pages', function(req, res, next) {
   res.render('__page_list', { ctx: global.siteDB, PAGES: global.PAGELIST });

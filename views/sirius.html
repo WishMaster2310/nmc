@@ -1,0 +1,59 @@
+{%- set TITLE = 'Сириус' -%}
+{%- set MENU = ctx.asideMenu -%}
+{%- set PAGEPATH = ["Частным клиентам", "Паевые фонды", TITLE] -%}
+{%- set TABS = [{
+	"title": "Описание",
+	"id": "description",
+	"content": "tab_description.html"
+},{
+	"title": "Стоимость пая и&nbsp;чистых активов",
+	"id": "price",
+	"content": "tab_description.html"
+},{
+	"title": "Структура активов",
+	"id": "structure",
+	"content": "tab_description.html"
+},{
+	"title": "Условия инвестирования",
+	"id": "conditions",
+	"content": "tab_description.html"
+},{
+	"title": "Раскрытие информации",
+	"id": "sharing",
+	"content": "tab_description.html"
+},{
+	"title": "Реквизиты",
+	"id": "contacts",
+	"content": "tab_description.html"
+}] -%}
+{%- set ASIDEACTIVE = 1 -%} {%- set ASIDESUBACTIVE = 1 -%}
+{%- extends "layout.html" -%}
+{%- block content %}
+
+<div class="c-page l-container">
+	<aside class="c-page__aside">
+		{% include "blocks/asideMenu.html" %}
+		<a class="c-poster" href="#">
+			<img src="/uploads/poster2.jpg" alt="">
+		</a>
+	</aside>
+	<main class="c-page__main">
+		{% include "blocks/bradCrumbs.html" %}
+		<h1 class="c-page__title">{{ TITLE }}</h1>
+		<div class="c-tabs">
+			<div class="c-tabs__menu">
+				{%- for item in TABS %}
+				<button type="button" data-tab="#nmc_tab_{{ item.id }}" class="c-tabs__menu-item">{{ item.title|safe }}</button>
+				{%- endfor %}
+			</div>
+			<div class="c-tabs__content">
+				{%- for item in TABS %}
+				<div class="c-tabs__unit">
+					{{ item.title|safe }}
+				</div>
+				{%- endfor %}
+			</div>
+		</div>
+	</main>
+</div>
+{%- endblock %}
