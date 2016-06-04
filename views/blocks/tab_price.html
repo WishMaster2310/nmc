@@ -32,7 +32,7 @@
 			<thead>
 				<tr>
 					<th>Дата оценки </th>
-					<th>За 1 мес.</th>
+					<th class="--selected">За 1 мес.</th>
 					<th>За 3 мес.</th>
 					<th>За 6 мес.</th>
 					<th>За 1 год</th>
@@ -55,4 +55,49 @@
 			</tbody>
 		</table>
 	</div>
+	<br>
+	<button class="c-btn" onclick="nmcApp.getShareValue()">Показать</button>
+	<br>
+	<div id="plotHiddenCharts" style="display: none;">
+		<h4>Стоимость пая</h4>
+		<p>27 декабря 2006 г.  –  29 февраля 2016 г.</p>
+		<div class="c-plot__wrapper c-plot__wrapper--noflex u-mb35">
+			<div class="c-plot" id="plot003" style="height: 400px;"></div>
+		</div>
+		
+		<h4>График СЧА</h4>
+		<p>27 декабря 2006 г.  –  29 февраля 2016 г.</p>
+		<div class="c-plot__wrapper c-plot__wrapper--noflex u-mb25">
+			<div class="c-plot" id="plot004" style="height: 400px;"></div>
+		</div>
+	</div>
 </div>
+<script>
+	$(function() {
+
+		var chartOpts = {
+			colors: ["#f9d532"],
+			series: {
+				shadowSize: 0
+			},
+			grid: {
+				borderWidth: 1,
+				color: "#dedede"
+			},
+			xaxis: {
+				color: "#dedede"
+			},
+			yaxis: {
+				color: "#dedede"
+			}
+		}
+
+		nmcApp.getShareValue = function() {
+			var data = $.getJSON('../uploads/plotDataCurve.json', function(d) {
+				$('#plotHiddenCharts').fadeIn();
+				$.plot("#plot003", [d], chartOpts);
+				$.plot("#plot004", [d], chartOpts);
+			})
+		}
+	})
+</script>
