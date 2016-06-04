@@ -78,4 +78,37 @@
 		list-style-position: inside;
 	}
 
+	table {
+		width: 100%;
+		border: 0;
+		font-size: 14px;
+		border-spacing: 2px;
+		border-collapse: separate;
+		
+		thead {
+			th {
+				padding: 5px 10px;
+				vertical-align: middle;
+				
+				text-align: left;
+				background-color: #a3a8aa;
+				color: #fff;
+			}
+		}
+		
+
+		tbody {
+
+			td {
+				border: 1px solid #eeeeee;
+				padding: 5px 10px;
+			}
+			tr:nth-child(even) {
+				td {
+					background-color: #eeeeee;
+				}
+			}
+		}
+	}
+
 }

@@ -164,6 +164,7 @@ body {
   display: inline-block;
   background-image: url(../images/iconset.png);
   background-repeat: no-repeat;
+  vertical-align: baseline;
 }
 a {
   text-decoration: none;
@@ -193,12 +194,12 @@ a:hover {
 }
 @media (min-width: 992px) {
   .l-container {
-    width: 980px;
+    width: 1000px;
   }
 }
 @media (min-width: 1200px) {
   .l-container {
-    width: 980px;
+    width: 1000px;
   }
 }
 .l-container--fluid {
@@ -1788,6 +1789,27 @@ a:hover {
   list-style-type: decimal;
   list-style-position: inside;
 }
+.c-wysiwyg table {
+  width: 100%;
+  border: 0;
+  font-size: 14px;
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+.c-wysiwyg table thead th {
+  padding: 5px 10px;
+  vertical-align: middle;
+  text-align: left;
+  background-color: #a3a8aa;
+  color: #fff;
+}
+.c-wysiwyg table tbody td {
+  border: 1px solid #eeeeee;
+  padding: 5px 10px;
+}
+.c-wysiwyg table tbody tr:nth-child(even) td {
+  background-color: #eeeeee;
+}
 .c-asideMenu {
   background-color: #eeeeee;
   padding: 16px 0;
@@ -1832,6 +1854,9 @@ a:hover {
   color: #323232;
 }
 .c-asideMenu__sublist-item li a:hover {
+  color: #6da1cd;
+}
+.c-asideMenu__sublist-item li.c-asideMenu__sublink--active a {
   color: #6da1cd;
 }
 .c-asideMenu__sublist-link {
@@ -2119,6 +2144,139 @@ a:hover {
   border: 1px solid #eeeeee;
   border-radius: 6px;
 }
+.c-tabs__menu {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding-right: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 40px;
+}
+.c-tabs__menu-item {
+  background-color: #f8ce13;
+  border: 1px solid #f8ce13;
+  margin-right: 5px;
+  padding: 10px 14px 8px 14px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 14px;
+  font-family: inherit;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  outline: none;
+  border-bottom: 0;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.c-tabs__menu-item:hover {
+  background-color: #f9d32c;
+}
+.c-tabs__menu-item:active {
+  box-shadow: inset 0 3px 5px 0 #b99805;
+}
+.c-tabs__menu-item--active {
+  background-color: #fff;
+  border-color: #e8e8e8;
+  cursor: default;
+  box-shadow: 0 1px 0 #fff;
+  pointer-evets: none;
+}
+.c-tabs__menu-item--active:hover {
+  background-color: #fff;
+}
+.c-tabs__menu-item--active:active {
+  box-shadow: 0 1px 0 #fff;
+}
+.c-tabs__unit {
+  display: none;
+}
+.c-tabs__unit--active {
+  display: block;
+}
+.c-note {
+  font-size: 16px;
+  padding-left: 18px;
+  border-left: 5px solid #6da1cd;
+  margin: 2.5em 0;
+}
+.c-note__title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.c-well {
+  border: 2px solid #f8ce13;
+  border-radius: 8px;
+  padding: 1.75em;
+}
+.c-plot {
+  width: 50%;
+}
+.c-plot__wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+}
+.c-plot__legend {
+  width: 50%;
+  -ms-flex-order: 2;
+      order: 2;
+}
+.c-plot__legend table td {
+  vertical-align: middle;
+}
+.c-plot__legend table td.legendColorBox > div {
+  width: 20px;
+  height: 20px;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.c-plot__legend table td.legendLabel {
+  padding-left: 10px;
+  font-size: 16px;
+}
+.c-plot__legend table td.legendColorBox > div > div {
+  width: 20px !important;
+  height: 20px !important;
+  border-width: 10px !important;
+}
+.c-plot__tip {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+}
+.c-icon--down-arrow {
+  background-position: 0px 0px;
+  width: 10px;
+  height: 12px;
+}
+.c-icon--up-arrow {
+  background-position: -20px 0px;
+  width: 10px;
+  height: 12px;
+}
 .u-clearfix:before,
 .u-clearfix:after {
   content: " ";
@@ -2141,4 +2299,7 @@ a:hover {
 }
 .u-red {
   color: red;
+}
+.u-dirtyBlue {
+  color: #4a565e;
 }

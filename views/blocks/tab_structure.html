@@ -1,0 +1,86 @@
+<div class="c-wysiwyg">
+	<p>Результатами, достигнутыми Компанией на сегодняшний день, мы обязаны деятельности по доверительному управлению пенсионными резервами негосударственных пенсионных фондов. Свои дальнейшие успехи мы связываем с предложением новых финансовых услуг нашим партнерам и потенциальным клиентам и с развитием, совершенствованием услуг, предоставляемых негосударственным пенсионным фондам.</p>
+</div>
+<div class="c-h4">Секторальная структура фонда на 29.02.2016<span class="u-red">*</span></div>
+<div class="c-plot__wrapper">
+	<div style="height: 300px;" class="c-plot" id="plot0001"></div>
+	<div class="c-plot__legend"></div>
+</div>
+<p><span class="u-red">*</span><span class="u-gray">указаны доли от стоимости чистых активов</span></p>
+<div class="c-h4">Секторальная структура фонда на 29.02.2016<span class="u-red">*</span></div>
+<div class="c-plot__wrapper">
+	<div style="height: 300px;" class="c-plot" id="plot0002"></div>
+	<div class="c-plot__legend"></div>
+</div>
+
+<script>
+	$(function() {
+		var chartOpts = {
+			// опции для пай чартов
+			colors: nmcApp.coldPalit,
+	    series: {
+        pie: {
+          show: true,
+          radius: 1
+        }
+	    },
+	    grid: {
+      	hoverable: true,
+      	show: true
+      },
+      legend: {
+      	show: true,
+        labelFormatter: labelFormatter
+      }
+		}
+		// хелпер для форматированния лейбла
+		function labelFormatter(label, series) {
+			return "<div>" + label  + '\r' + Math.round(series.percent) + "%</div>";
+		}
+
+		// грузим данные и рисуем графики
+		function drawChart (data, placeholder, opts) {
+			$.getJSON(data, function(d) {
+				var legendPlaceholder = $(placeholder).closest('.c-plot__wrapper').find('.c-plot__legend');
+				opts.legend.container = $(legendPlaceholder);
+
+				$.plot(placeholder, d, opts);
+
+				$(placeholder).append('<div class="c-plot__tip"></div>');
+
+				var ofset = $(placeholder).offset();
+				var tip = $(placeholder).find('.c-plot__tip');
+
+				$(placeholder).bind("plothover", function(event, pos, obj) {
+						if (!obj) {
+							return;
+						}
+
+						$(tip).css({
+							'display': 'block',
+							'top': Math.round(pos.pageY - ofset.top),
+							'left': Math.round(pos.pageX - ofset.left)
+						})
+
+						$(tip).html("<span>" + obj.series.label + " " + Math.round(obj.series.percent) + " % </span>");
+					})
+
+					.bind('mouseleave', function() {
+						$(tip).hide();
+					})
+
+			}).fail(function() {
+
+				$(placeholder).html('Произошла ошибка.');
+				
+			});
+		}
+
+		{% include "blocks/__chartComment.html" %}
+
+		nmcApp.tabCallbacks.structure = function() {
+			drawChart('../uploads/plotDataPie.json', '#plot0001', chartOpts);
+			drawChart('../uploads/plotDataPie2.json', '#plot0002', chartOpts);
+		}
+	});
+</script>

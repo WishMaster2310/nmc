@@ -1,0 +1,50 @@
+.c-plot {
+	width: 50%;
+	
+	&__wrapper {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		flex-shrink: 0;
+		align-items: stretch;
+	}
+
+	&__legend {
+		width: 50%;
+		order: 2;
+
+		table {
+			td {
+				vertical-align: middle;
+				&.legendColorBox > div {
+					width: 20px;
+					height: 20px;
+					padding: 0 !important;
+					border: 0 !important;
+				}
+
+				&.legendLabel {
+					padding-left: 10px;
+					font-size: 16px;
+				}
+
+				&.legendColorBox > div > div {
+					width: 20px !important;
+					height: 20px !important;
+					border-width: 10px !important;
+				}
+			}
+		}
+	}
+
+	&__tip {
+		position: absolute;
+		display: block;
+		pointer-events: none;
+		z-index: 1;
+		padding: 10px 20px;
+		background-color: #fff;
+		border: 1px solid #e8e8e8;
+		border-radius: 8px;
+	}	
+}

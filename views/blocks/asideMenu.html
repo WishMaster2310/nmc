@@ -9,11 +9,15 @@
 				<a href="{{ item.url }}" class="c-asideMenu__item-caption js-openMenu">{{ item.caption }}</a>
 				<ul class="c-asideMenu__sublist">
 					{%- for subItem in item.items -%}
+						{%- set preRootIndex = loop.index -%}
 						<li class="c-asideMenu__sublist-item {% if ASIDEACTIVE == rootIndex and ASIDESUBACTIVE == loop.index  %}c-asideMenu__sublist-item--active{% endif %}">
 							<a href="{{ subItem.url }}" class="c-asideMenu__sublist-link">{{ subItem.caption }}</a>
-							{%- if subItem.items %} <ul>{% for i in subItem.items %}
-								<li><a href="{{ i.url }}">{{ i.caption }}</a></li>
-							{%- endfor %}</ul> 
+							{%- if subItem.items %} 
+								<ul>
+								{%- for i in subItem.items %}
+									<li class="c-asideMenu__sublink {% if ASIDEACTIVE == rootIndex and ASIDESUBACTIVE == preRootIndex and ASIDE_SUB_LINK_ACTIVE == loop.index  %}c-asideMenu__sublink--active{% endif %}"><a href="{{ i.url }}" >{{ i.caption }}</a></li>
+								{%- endfor %}
+								</ul> 
 							{%- endif %}
 						</li>
 					{%- endfor %}

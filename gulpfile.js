@@ -106,7 +106,7 @@ gulp.task('default2', function() {
     server.stop();
     server.run(['bin/www'])
   });
-  gulp.watch(['public/__icons/*.png'], ['sprites', server.notify]);
+  gulp.watch(['public/__icons/*.png'], ['sprites', function(event) {server.notify(event)}]);
   gulp.watch(['public/less/*.less', 'public/less/**/*.less'], ['less:dev', server.notify]);
 });
 

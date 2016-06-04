@@ -8,25 +8,26 @@
 },{
 	"title": "Стоимость пая и&nbsp;чистых активов",
 	"id": "price",
-	"content": "tab_description.html"
+	"content": "tab_price.html"
 },{
 	"title": "Структура активов",
 	"id": "structure",
-	"content": "tab_description.html"
+	"content": "tab_structure.html",
+	"callback": "nmcApp.tabCallbacks.structure"
 },{
 	"title": "Условия инвестирования",
 	"id": "conditions",
-	"content": "tab_description.html"
+	"content": "tab_conditions.html"
 },{
 	"title": "Раскрытие информации",
 	"id": "sharing",
-	"content": "tab_description.html"
+	"content": "tab_sharing.html"
 },{
 	"title": "Реквизиты",
 	"id": "contacts",
-	"content": "tab_description.html"
+	"content": "tab_contacts.html"
 }] -%}
-{%- set ASIDEACTIVE = 1 -%} {%- set ASIDESUBACTIVE = 1 -%}
+{%- set ASIDEACTIVE = 1 -%} {%- set ASIDESUBACTIVE = 1 -%} {%- set ASIDE_SUB_LINK_ACTIVE = 1 -%} 
 {%- extends "layout.html" -%}
 {%- block content %}
 
@@ -34,7 +35,7 @@
 	<aside class="c-page__aside">
 		{% include "blocks/asideMenu.html" %}
 		<a class="c-poster" href="#">
-			<img src="/uploads/poster2.jpg" alt="">
+			<img src="/uploads/poster5.jpg" alt="">
 		</a>
 	</aside>
 	<main class="c-page__main">
@@ -43,17 +44,23 @@
 		<div class="c-tabs">
 			<div class="c-tabs__menu">
 				{%- for item in TABS %}
-				<button type="button" data-tab="#nmc_tab_{{ item.id }}" class="c-tabs__menu-item">{{ item.title|safe }}</button>
+				<button type="button" {% if item.callback %}data-cb="{{ item.callback }}"{% endif %} data-tab="{{ item.id }}" class="c-tabs__menu-item">{{ item.title|safe }}</button>
 				{%- endfor %}
 			</div>
 			<div class="c-tabs__content">
 				{%- for item in TABS %}
-				<div class="c-tabs__unit">
-					{{ item.title|safe }}
+				<div class="c-tabs__unit" id="nmc_tab_{{ item.id }}">
+					{% include "blocks/"~item.content %}
 				</div>
 				{%- endfor %}
 			</div>
 		</div>
 	</main>
 </div>
+<script>
+	$(function() {
+		//nmcApp.tabPrefix = 'nmc_tab';
+		nmcApp.initTabs();
+	})
+</script>
 {%- endblock %}

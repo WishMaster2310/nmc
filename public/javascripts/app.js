@@ -1,11 +1,62 @@
+
+var nmcApp = {
+	coldPalit: ['#6da1cd','#a6cbeb', '#d9edfe', '#d2dde6', '#a6cbeb', '#ecf5fd', '#99b4cc'],
+	tabPrefix: 'nmc_tab',
+	tabCallbacks: {
+	},
+	showTab: function(tab) {
+		var target, 
+				tabClass = 'c-tabs__menu-item--active', 
+				tabContent = 'c-tabs__unit--active',
+				current, 
+				cb;
+		if (!tab) {
+			var tab = $('.c-tabs__menu-item').first().attr('data-tab')
+		}
+		current = $('.c-tabs__menu-item[data-tab='+ tab +']');
+		target = '#' + nmcApp.tabPrefix +'_' + tab;
+
+		if ($(target).length === 0) {
+			console.error('=> Tab error. \ncan\'t find tabContent with id ' + target)
+			return
+		}
+
+		window.location.hash = tab;
+
+		current.addClass(tabClass)
+			.siblings().removeClass(tabClass);
+
+		$(target).addClass(tabContent)
+			.siblings().removeClass(tabContent);
+
+		try	{
+			cb = eval(current.attr('data-cb'));
+		} catch (e) {
+			cb = null;
+			console.error('OOps.. Error occured while tab callback\'s function... see status below: \n' + e)
+		}
+
+		if (!!cb) {
+			console.log(cb)
+			cb()
+		}
+	},
+	initTabs: function(tab) {
+		var defaultTab = $('.c-tabs__menu-item').first();
+		var tab = window.location.hash ? (window.location.hash).slice(1): defaultTab.attr('data-tab');
+		this.showTab(tab);
+	},
+	slickOpts: {
+		dots: true,
+		nextArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--next"><span></span></div>',
+		prevArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--prev"><span></span></div>'
+	}
+}
+
 $(function () {
 	var mainSlider = $('#mainSlider');
 	if (mainSlider.length > 0) {
-		mainSlider.slick({
-			dots: true,
-			nextArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--next"><span></span></div>',
-			prevArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--prev"><span></span></div>'
-		})
+		mainSlider.slick(nmcApp.slickOpts)
 	}
 
 	$('.c-accordion__label').on('click', function(e) {
@@ -14,14 +65,18 @@ $(function () {
 		var content = accordion.find('.c-accordion__content');
 		accordion.toggleClass('c-accordion__item--active');
 		if ($(accordion).hasClass('c-accordion__item--active')) {
-
 			$(content).stop(true, true).slideDown(300)
 		} else {
 			$(content).stop(true, true).slideUp(275)
 		}
 	});
+	
+	$('.c-docs__item--withModal').fancybox();
 
-	$('.c-docs__item--withModal').fancybox({
-		
+	$('.c-tabs__menu-item').on('click', function() {
+		var tab = $(this).attr('data-tab');
+		var cb = eval($(this).attr('data-cb'));
+		if ($(this).hasClass('c-tabs__menu-item--active')) return;
+		nmcApp.showTab(tab)
 	})
 });
