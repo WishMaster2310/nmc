@@ -30,7 +30,44 @@
 		<div class="l-container">
 			<nav class="c-header__menu">
 			{%- for item in  ctx.headerNav -%}
-				<a href="{{ item.url }}" class="c-header__menu-item {% if HEADER_ACTIVE == loop.index %}c-header__menu-item--active{% endif %}">{{ item.caption }}</a>
+				{%- if loop.index == 1 %}
+					<div  class="c-header__menu-item {% if HEADER_ACTIVE == loop.index %}c-header__menu-item--active{% endif %}">
+					{{ item.caption }}
+						<div class="c-header__submenu c-subnav">
+							<div class="c-subnav__container">
+								<div class="c-subnav__row">
+									<div class="c-subnav__col c-subnav__col--1">
+										<span class="c-subnav__link">Паевые фонды</span>
+										<div class="c-subnav__row">
+											<div class="c-subnav__col c-subnav__col--4">
+												<a href="#" class="c-subnav__sublink">ОПИФ</a>
+												<a href="#" class="c-subnav__sublink">ЗПИФ</a>
+												<a href="#" class="c-subnav__sublink">ИПИФ</a>
+											</div>
+											<div class="c-subnav__col c-subnav__col--4">
+												<a class="c-subnav__sublink" href="#">Отчетность и&nbsp;документы Специализированного депозитария</a>
+											</div>
+										</div>
+									</div>
+									<div class="c-subnav__col c-subnav__col--2">
+										<a href="#" class="c-subnav__link">Доверительное управление</a>
+										<a href="#" class="c-subnav__link">Управление целевым капиталом</a>
+										<a href="#" class="c-subnav__link">Управление страховыми резервами</a>
+									</div>
+									<div class="c-subnav__col c-subnav__col--3">
+										<a href="#" class="c-subnav__link">Управление компенсационным фондом СРО</a>
+										<a href="#" class="c-subnav__link">Управление активами НПФ</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{%- else %}
+					<a href="{{ item.url }}" class="c-header__menu-item {% if HEADER_ACTIVE == loop.index %}c-header__menu-item--active{% endif %}">
+					{{ item.caption }}
+					</a>
+				{%- endif %}
+				
 			{%- endfor -%}
 			</nav>
 		</div>

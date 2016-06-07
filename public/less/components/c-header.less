@@ -96,6 +96,7 @@
 	}
 
 	&__menu {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		align-items: stretch;
@@ -109,7 +110,7 @@
 			flex-grow: 1;
 			padding: 10px 20px;
 			border: 1px solid #fff;
-			border-radius: 8px;
+			border-radius: 20px;
 			text-align: center;
 			text-decoration: none;
 			align-self: center;
@@ -134,5 +135,21 @@
 			}
 			
 		}
+	}
+
+	&__menu-item:hover &__submenu {
+		display: block;
+		
+	}
+
+	&__submenu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		z-index: 2;
+		text-transform: none;
+		text-align: left;
+
 	}
 }
