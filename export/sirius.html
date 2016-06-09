@@ -99,6 +99,7 @@
 					</a>
         </nav>
       </div>
+      <div class="c-header__navclose"></div>
     </div>
   </header>
 
@@ -279,16 +280,23 @@
                   </tbody>
                 </table>
               </div>
-              <br>
-              <button class="c-btn" onclick="nmcApp.getShareValue()">Показать</button>
-              <br>
+
+              <div class="l-row u-mb35 u-mt35">
+                <div class="l-col--md-8">
+                  <form class="c-form c-form--inline" method="POST" action="#">
+                    c
+                    <input type="text" name="dateFrom" class="j-datepicker c-form__control c-form__control--date">по
+                    <input name="dateTo" type="text" class="c-form__control c-form__control--date  j-datepicker">
+                    <button type="submit" class="c-btn" onclick="nmcApp.getShareValue(); return false">Показать</button>
+                  </form>
+                </div>
+              </div>
               <div id="plotHiddenCharts" style="display: none;">
                 <h4>Стоимость пая</h4>
                 <p>27 декабря 2006 г. – 29 февраля 2016 г.</p>
                 <div class="c-plot__wrapper c-plot__wrapper--noflex u-mb35">
                   <div class="c-plot" id="plot003" style="height: 400px;"></div>
                 </div>
-
                 <h4>График СЧА</h4>
                 <p>27 декабря 2006 г. – 29 февраля 2016 г.</p>
                 <div class="c-plot__wrapper c-plot__wrapper--noflex u-mb25">
@@ -296,34 +304,50 @@
                 </div>
               </div>
             </div>
+
             <script>
               $(function() {
-              		var data = [[0, 3], [4, 8], [8, 5], [9, 13], [11, 4], [12, 13]];
-              		var data2 = [[0, 1], [4, 2], [8, 3], [9, 1], [2, 4], [3, 13]];
-              		var chartOpts = {
-              			colors: ["#f9d532"],
-              			series: {
-              				shadowSize: 0
-              			},
-              			grid: {
-              				borderWidth: 1,
-              				color: "#dedede"
-              			},
-              			xaxis: {
-              				color: "#dedede"
-              			},
-              			yaxis: {
-              				color: "#dedede"
-              			}
-              		}
+                var data = [
+                  [0, 3],
+                  [4, 8],
+                  [8, 5],
+                  [9, 13],
+                  [11, 4],
+                  [12, 13]
+                ];
+                var data2 = [
+                  [0, 1],
+                  [4, 2],
+                  [8, 3],
+                  [9, 1],
+                  [2, 4],
+                  [3, 13]
+                ];
+                var chartOpts = {
+                  colors: ["#f9d532"],
+                  series: {
+                    shadowSize: 0
+                  },
+                  grid: {
+                    borderWidth: 1,
+                    color: "#dedede"
+                  },
+                  xaxis: {
+                    color: "#dedede"
+                  },
+                  yaxis: {
+                    color: "#dedede"
+                  }
+                }
               
-              		nmcApp.getShareValue = function() {
-              			$('#plotHiddenCharts').fadeIn();
-              			$.plot("#plot003", [data], chartOpts);
-              			$.plot("#plot004", [data2], chartOpts);
-              		}
-              	})
+                nmcApp.getShareValue = function() {
+                  $('#plotHiddenCharts').fadeIn();
+                  $.plot("#plot003", [data], chartOpts);
+                  $.plot("#plot004", [data2], chartOpts);
+                }
+              })
             </script>
+
           </div>
           <div class="c-tabs__unit" id="nmc_tab_structure">
             <div class="c-wysiwyg">

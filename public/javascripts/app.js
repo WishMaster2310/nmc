@@ -107,5 +107,7 @@ $(function () {
 		var cb = eval($(this).attr('data-cb'));
 		if ($(this).hasClass('c-tabs__menu-item--active')) return;
 		nmcApp.showTab(tab)
-	})
+	});
+
+	$('.j-datepicker').pickmeup();
 });

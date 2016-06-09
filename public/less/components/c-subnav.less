@@ -90,4 +90,25 @@
 		}
 		
 	}
+
+	@media (max-width: @screen-md-min) {
+		
+		position: static;
+
+		&__container {
+			padding: 0;
+			box-shadow: none;
+		}
+
+		&__row {
+			display: block;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__col {
+			display: block;
+			width: 100%;
+		}
+  }
 }
