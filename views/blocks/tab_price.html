@@ -74,7 +74,8 @@
 </div>
 <script>
 	$(function() {
-
+		var data = [[0, 3], [4, 8], [8, 5], [9, 13], [11, 4], [12, 13]];
+		var data2 = [[0, 1], [4, 2], [8, 3], [9, 1], [2, 4], [3, 13]];
 		var chartOpts = {
 			colors: ["#f9d532"],
 			series: {
@@ -93,11 +94,9 @@
 		}
 
 		nmcApp.getShareValue = function() {
-			var data = $.getJSON('../uploads/plotDataCurve.json', function(d) {
-				$('#plotHiddenCharts').fadeIn();
-				$.plot("#plot003", [d], chartOpts);
-				$.plot("#plot004", [d], chartOpts);
-			})
+			$('#plotHiddenCharts').fadeIn();
+			$.plot("#plot003", [data], chartOpts);
+			$.plot("#plot004", [data2], chartOpts);
 		}
 	})
 </script>

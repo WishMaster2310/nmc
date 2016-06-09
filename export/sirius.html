@@ -298,7 +298,8 @@
             </div>
             <script>
               $(function() {
-              
+              		var data = [[0, 3], [4, 8], [8, 5], [9, 13], [11, 4], [12, 13]];
+              		var data2 = [[0, 1], [4, 2], [8, 3], [9, 1], [2, 4], [3, 13]];
               		var chartOpts = {
               			colors: ["#f9d532"],
               			series: {
@@ -317,11 +318,9 @@
               		}
               
               		nmcApp.getShareValue = function() {
-              			var data = $.getJSON('../uploads/plotDataCurve.json', function(d) {
-              				$('#plotHiddenCharts').fadeIn();
-              				$.plot("#plot003", [d], chartOpts);
-              				$.plot("#plot004", [d], chartOpts);
-              			})
+              			$('#plotHiddenCharts').fadeIn();
+              			$.plot("#plot003", [data], chartOpts);
+              			$.plot("#plot004", [data2], chartOpts);
               		}
               	})
             </script>
@@ -348,8 +347,23 @@
 
             <script>
               $(function() {
+              		var data = [
+              			{ "label": "Ликвидные акции",  "data": 63.10},
+              			{ "label": "Облигации",  "data": 32},
+              			{ "label": "Денежные средства",  "data": 3},
+              			{ "label": "Паи фондов ",  "data": 2}
+              		];
+              
+              		var data2 = [
+              			{ "label": "Гособлигации", "data": 23.10},
+              			{ "label": "Потребительский сектор",  "data": 32},
+              			{ "label": "Транспорт",  "data": 3},
+              			{ "label": "Прочие",  "data": 2},
+              			{ "label": "Прочие",  "data": 2},
+              			{ "label": "Металлургия и добыча",  "data": 33}
+              		]
+              		
               		var chartOpts = {
-              			// опции для пай чартов
               			colors: nmcApp.coldPalit,
               	    series: {
                       pie: {
@@ -363,71 +377,15 @@
                     },
                     legend: {
                     	show: true,
-                      labelFormatter: labelFormatter
+                      labelFormatter: function(label, series) {
+                      	return "<div>" + label  + '\r' + Math.round(series.percent) + "%</div>";
+                      }
                     }
               		}
-              		// хелпер для форматированния лейбла
-              		function labelFormatter(label, series) {
-              			return "<div>" + label  + '\r' + Math.round(series.percent) + "%</div>";
-              		}
-              
-              		// грузим данные и рисуем графики
-              		function drawChart (data, placeholder, opts) {
-              			$.getJSON(data, function(d) {
-              				var legendPlaceholder = $(placeholder).closest('.c-plot__wrapper').find('.c-plot__legend');
-              				opts.legend.container = $(legendPlaceholder);
-              
-              				$.plot(placeholder, d, opts);
-              
-              				$(placeholder).append('<div class="c-plot__tip"></div>');
-              
-              				var ofset = $(placeholder).offset();
-              				var tip = $(placeholder).find('.c-plot__tip');
-              
-              				$(placeholder).bind("plothover", function(event, pos, obj) {
-              						if (!obj) {
-              							return;
-              						}
-              
-              						$(tip).css({
-              							'display': 'block',
-              							'top': Math.round(pos.pageY - ofset.top),
-              							'left': Math.round(pos.pageX - ofset.left)
-              						})
-              
-              						$(tip).html("<span>" + obj.series.label + " " + Math.round(obj.series.percent) + " % </span>");
-              					})
-              
-              					.bind('mouseleave', function() {
-              						$(tip).hide();
-              					})
-              
-              			}).fail(function() {
-              
-              				$(placeholder).html('Произошла ошибка.');
-              				
-              			});
-              		}
-              
-              		/* =================
-              	Привет :)
-              	Так как меня попросили заинлайнить скрипты для графиков,
-              	а сами графики поместили в табы,
-              	то я был вынужден, воткнуть функцию рисования графиков
-              	в колбеки для табов. (Ибо, график не может быть нарисован,
-              	если его родитель, или родитель родителя, не отображается на странице.)
-              	По этому, в дата атрибуте нужно указать имя функции, которая будет выполнена
-              	после открытия таба http://take.ms/MVV56
-              	
-              	В app.js есть функция отвечающая за открытие таба nmcApp.showTab.
-              	В ней, колбек, переданный через дата атрибут, будет завернут в eval и вызван.
-              	На всякий "пожарный" обернул eval в try/catch
-              =====================
-              */
               
               		nmcApp.tabCallbacks.structure = function() {
-              			drawChart('../uploads/plotDataPie.json', '#plot0001', chartOpts);
-              			drawChart('../uploads/plotDataPie2.json', '#plot0002', chartOpts);
+              			nmcApp.drawPieChart(data, '#plot0001', chartOpts);
+              			nmcApp.drawPieChart(data2, '#plot0002', chartOpts);
               		}
               	});
             </script>

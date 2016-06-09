@@ -50,6 +50,35 @@ var nmcApp = {
 		dots: true,
 		nextArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--next"><span></span></div>',
 		prevArrow: '<div class="c-mainSlider__arrow c-mainSlider__arrow--prev"><span></span></div>'
+	},
+	drawPieChart: function (data, placeholder, opts) {
+		var legendPlaceholder = $(placeholder).closest('.c-plot__wrapper').find('.c-plot__legend');
+		opts.legend.container = $(legendPlaceholder);
+
+		$.plot(placeholder, data, opts);
+
+		$(placeholder).append('<div class="c-plot__tip"></div>');
+
+		var ofset = $(placeholder).offset();
+		var tip = $(placeholder).find('.c-plot__tip');
+
+		$(placeholder).bind("plothover", function(event, pos, obj) {
+			if (!obj) {
+				return;
+			}
+
+			$(tip).css({
+				'display': 'block',
+				'top': Math.round(pos.pageY - ofset.top),
+				'left': Math.round(pos.pageX - ofset.left)
+			})
+
+			$(tip).html("<span>" + obj.series.label + " " + Math.round(obj.series.percent) + " % </span>");
+		})
+
+		.bind('mouseleave', function() {
+			$(tip).hide();
+		})
 	}
 }
 
