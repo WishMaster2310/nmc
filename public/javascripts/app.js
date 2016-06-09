@@ -109,5 +109,7 @@ $(function () {
 		nmcApp.showTab(tab)
 	});
 
-	$('.j-datepicker').pickmeup();
+	$('.j-datepicker').pickmeup({
+		format: 'd-m-Y'
+	});
 });
