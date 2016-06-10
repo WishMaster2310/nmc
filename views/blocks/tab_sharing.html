@@ -12,6 +12,7 @@
           {%- for d in range(0, 7) %}
           <a href="/uploads/docs.html" class="c-pager__item {%- if loop.index == 1 %} c-pager__item--active{% endif %}">{{ 2009 + loop.index }}</a> {% endfor %}
         </div>
+        <p>Акционерное общество «Национальная управляющая компания» имеет лицензию на осуществление деятельности по управлению инвестиционными фондами, паевыми инвестиционными фондами и негосударственными пенсионными фондами № 21−000−1−00085, выданную ФКЦБ России 05 ноября 2002&nbsp;г.</p>
         <div class="j-ajaxContent">
           {% include "blocks/files" ~ loop.index ~".html" %}
         </div>
