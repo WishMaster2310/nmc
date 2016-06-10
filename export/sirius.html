@@ -578,6 +578,7 @@
                   
                   if(link.length === 0) {return};
             
+                  link.addClass('c-pager__item--active').siblings().removeClass('c-pager__item--active')
                   url = link.attr('href');
                   container = that.siblings('.j-ajaxContent');
                   container.stop().fadeOut();
