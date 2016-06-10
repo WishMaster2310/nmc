@@ -112,4 +112,46 @@
 		text-transform: uppercase;
 		
 	}
+
+	@media  (max-width: @screen-md-min) {
+
+		&__row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+
+		&__col {
+			width: 50%;
+			padding: 0 15px;
+			margin-bottom: 10px;
+
+			&--3 {
+				text-align: left;
+			}
+
+			&--4 {
+				text-align: left;
+			}
+		}
+	}
+
+	@media  (max-width: @screen-sm-min) {
+		&__row {
+			flex-direction: column;
+		}
+
+		&__col {
+			width: 100%;
+			&--3 {
+				order: 1;
+			}
+
+			&--1 {
+				order: 4;
+			}
+		}
+	}
 }

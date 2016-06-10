@@ -3,6 +3,7 @@
 	&__topline {
 		
 		padding: 18px 0;
+		transition: transform .3s ease-in;
 	}
 
 	&__navline {
@@ -31,6 +32,15 @@
 		&--contacts {
 			width: 245px;
 			text-align: right;
+		}
+
+		&--menu {
+			width: 60px;
+			padding-left: 20px;
+			vertical-align: top;
+			display: none;
+			
+			
 		}
 	}
 
@@ -144,6 +154,8 @@
 	}
 
 	@media (min-width: @screen-md) {
+
+
 		&__menu-item:hover &__submenu {
 			display: block;
 			
@@ -163,12 +175,20 @@
 
 	}
 
-	&__navclose {
-		display: none;
-		
-	}
-
 	@media (max-width: @screen-md-min) {
+		position: relative;
+		overflow: hidden;
+
+
+		&--active &__topline {
+			transform: translateX(-300px)
+		}
+
+		&--active &__navline {
+			transform: translateX(-280px)
+		}
+
+
 		&__menu {
 			display: block;
 
@@ -183,40 +203,113 @@
 				margin-left: 0;
 				padding: 10px 10px 10px 20px;
 			}
-			
 		}	
 
 		&__nav {
 			display: none;
-			
 		}
 
 		&__navline {
-			display: none;
+			//display: none;
+			transition: transform .3s ease-in;
 			
-			position: absolute;
+			position: fixed;
+			height: 100%;
 			border: 1px solid #EFEFEF;
-			box-shadow: -11px 9px 18px -15px #000;
-			top: 0px;
-			width: 300px;
-			right: 0;
+			box-shadow: -11px 0px 18px -15px #000;
+			top: 0;
+			width: 280px;
+			left: 100%;
 			z-index: 10;
-			padding: 10px 10px 10px 10px;
+			padding: 10px 0 10px 0;
 			background-color: #fff;
+			overflow-y: auto;
 			
 			.l-container {
 				width: 100%;
 			}
 		}
 
-		&__navclose {
-			display: block;
-			width: 32px;
-			height: 32px;
-			background-color: #000;
-			position: absolute;
-			top: -32px;
-			right: 0;
+		&__row {
+			//display: block;
 		}
+
+		&__col {
+			&--menu {
+				display: table-cell;
+				
+			}
+			
+			&--logo {
+
+			}
+		}
+  }
+
+  @media (max-width: @screen-sm-min) {
+		padding-top: 30px;
+  	&__userblock {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		left: 0;
+  		margin-bottom: 0;
+  		padding: 5px 10px;
+  		height: 30px;
+  		overflow: hidden;
+  		background-color: #eee;
+  	}
+
+
+  	&__logo {
+  		margin-bottom: 10px;
+  		display: inline-block;
+  		vertical-align: top;
+  		
+  		img {
+  			width: 200px;
+  		}
+  	}
+
+  	&__contacts {
+  		
+  		&-tel {
+  			font-size: 16px;
+  			white-space: nowrap;
+  		}
+
+  		&-title {
+  			display: inline-block;
+  			
+  		}
+  	}
+
+
+  	&__row {
+  		display: block;
+  		
+  	}
+
+  	&__col {
+  		display: block;
+  		width: 100%;
+
+  		&--logo {
+  			
+  		}
+
+  		&--contacts {
+  			text-align: left;
+  		}
+
+  		&--menu {
+  			position: absolute;
+  			right: 0;
+  			top: 25px;
+  			width: 40px;
+  			height: 40px;
+  			padding-left: 0;
+  		}
+  	}
   }
 }

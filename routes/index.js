@@ -64,6 +64,10 @@ router.get('/license', function(req, res, next) {
   res.render('license', { ctx: global.siteDB});
 });
 
+router.get('/new_license', function(req, res, next) {
+  res.render('new_license', { ctx: global.siteDB});
+});
+
 router.get('/sirius', function(req, res, next) {
   res.render('sirius', { ctx: global.siteDB});
 });

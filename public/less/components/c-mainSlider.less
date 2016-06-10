@@ -121,4 +121,25 @@
 			display: none;
 		}
 	}
+
+	@media (max-width: @screen-md-min) {
+
+		&__container {
+		}
+
+		&__inner {
+			width: 100%;
+			max-width: 450px;
+		}
+		&__content {
+			h1 {
+				.fontSize(40);
+			}
+		}
+
+		&__arrow {
+			display: none !important;
+			
+		}
+	}
 }

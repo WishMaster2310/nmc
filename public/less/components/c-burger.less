@@ -1,0 +1,42 @@
+.c-burger {
+	display: block;
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	background-color: #eee;
+	position: relative;
+
+	&__line {
+		height: 3px;
+		position: absolute;
+		left: 8px;
+		right: 8px;
+		top: 50%;
+		margin-top: -2px;
+		background-color: @secondary-color;
+
+		&:before {
+			height: 3px;
+			position: absolute;
+			top: -8px;
+			display: block;
+			content: "";
+			background-color:  @secondary-color;
+			left: 0;
+			width: 100%;
+		}
+
+		&:after {
+			height: 3px;
+			position: absolute;
+			top: 8px;
+			display: block;
+			content: "";
+			background-color:  @secondary-color;
+			left: 0;
+			width: 100%;
+		}
+	}
+
+
+}

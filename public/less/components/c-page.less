@@ -26,4 +26,21 @@
 		color: @secondary-color;
 		font-weight: 300;
 	}
+
+	@media (max-width: @screen-sm-min) {
+		&__aside {
+			width: 100%;
+			float: none;
+
+			.c-poster {
+				display: none;
+				
+			}
+		}
+
+		&__main {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
 }

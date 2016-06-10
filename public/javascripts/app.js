@@ -129,4 +129,9 @@ $(function () {
 		e.preventDefault();
 		nmcApp.smallTab(this);
 	});
+
+	$('.c-burger').on('click', function() {
+		$('.c-header').toggleClass('c-header--active')
+		$('body').toggleClass('body--on-menu-open')
+	})
 });
