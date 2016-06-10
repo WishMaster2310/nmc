@@ -1,0 +1,22 @@
+.c-pager {
+	margin-top: round(20/16em, 3);
+	margin-bottom: round(20/16em, 3);
+	
+	&__item {
+
+		display: inline-block;
+		vertical-align: top;
+		padding: 5px 10px;
+		color: #454545;
+		border-radius: 6px;
+
+		&--active {
+			background-color: @primary-color;
+			font-weight: 600;
+
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+}

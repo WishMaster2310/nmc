@@ -1,0 +1,36 @@
+{%- set File  = {
+	"src": "#",
+	"fileName": "Правила доверительного управления Интервальным паевым инвестиционным фондом акций «Альфа-Капитал Акции роста»",
+	"size": "638 Кб",
+	"date": "06.11.2015",
+	"time": "1:24",
+	"type": "pdf"
+}-%}
+{%- set List =[
+	{
+		"title": "Квартал I",
+		"files": 5
+	},
+	{
+		"title": "Квартал II",
+		"files": 1
+	},
+	{
+		"title": "Квартал III",
+		"files": 3
+	},
+	{
+		"title": "Квартал IV",
+		"files": 4
+	}
+] -%}
+{%- for item in List -%}
+<div class="u-mb25">
+	<div class="c-h4">{{ item.title }}</div>
+	{% for file in range(0, item.files) %}
+		<a href="{{ File.src }}" class="c-file c-file--{{ File.type }}">
+			{{ File.fileName }} <span class="u-gray">[{{ File.size }}], {{ File.date }}, {{ File.time }} </span>
+		</a>
+	{% endfor %}
+</div>
+{%- endfor -%}

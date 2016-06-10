@@ -1,3 +1,51 @@
-{% include "blocks/files.html" %}
+{% set smalltabs = ['Отчетность', 'Документы', 'Существенные факты'] %}
 <div class="c-wysiwyg">
+  <div class="c-smalltab">
+    <div class="c-smalltab__menu">
+      {% for item in smalltabs %}
+      <a href="#" class="c-smalltab__menu-item {%- if loop.index == 1 %} c-smalltab__menu-item--active{% endif %}" data-tab="#smallTab{{ loop.index }}">{{ item }}</a> {% endfor %}
+    </div>
+    <div class="c-smalltab__content">
+      {%- for item in smalltabs %}
+      <div id="smallTab{{ loop.index }}" class="c-smalltab__unit {%- if loop.index == 1 %} c-smalltab__unit--active{% endif %}">
+        <div class="c-pager">
+          {%- for d in range(0, 7) %}
+          <a href="/uploads/docs.html" class="c-pager__item {%- if loop.index == 1 %} c-pager__item--active{% endif %}">{{ 2009 + loop.index }}</a> {% endfor %}
+        </div>
+        <div class="j-ajaxContent">
+          {%- include "blocks/files" ~ loop.index ~".html" %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
 </div>
+<script>
+  $(function() {
+    $('.c-pager').on('click', function(e) {
+      e.preventDefault();
+      var that = $(this), 
+          url, 
+          container, 
+          link = $(e.target).closest('.c-pager__item');
+      
+      if(link.length === 0) {return};
+
+      url = link.attr('href');
+      container = that.siblings('.j-ajaxContent');
+      container.stop().fadeOut();
+
+      var jqxhr = $.get({
+        url: url,
+        dataType: 'html'
+      })
+        .done(function(d) {
+          container.html(d)
+          .stop(true, true).fadeIn();
+        })
+        .fail(function() {
+          container.html('Произошла ошибка на сервере. Пожалуйста, повторите попытку позже.').stop(true, true).fadeIn()
+        });
+    })
+  });
+</script>
