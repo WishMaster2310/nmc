@@ -13,7 +13,7 @@
           <a href="/uploads/docs.html" class="c-pager__item {%- if loop.index == 1 %} c-pager__item--active{% endif %}">{{ 2009 + loop.index }}</a> {% endfor %}
         </div>
         <div class="j-ajaxContent">
-          {%- include "blocks/files" ~ loop.index ~".html" %}
+          {% include "blocks/files" ~ loop.index ~".html" %}
         </div>
       </div>
       {%- endfor %}

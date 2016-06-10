@@ -122,7 +122,7 @@ gulp.task('export', function() {
  // scripts = new RegExp('src=+([\'\"])\/javascripts\/(.[^\'\"]+)', 'g');
   //styles = new RegExp('src=+([\'\"])\/stylesheets\/(.[^\'\"]+)', 'g');
 
-  gulp.src(['views/*.html', '!views/__*.html'])
+  gulp.src(['views/*.html', '!views/__*.html', '!error.html'])
     .pipe(nunjucksRender({
       isExport: true,
       ctx: siteDB
