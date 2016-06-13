@@ -31,4 +31,28 @@
 			max-width: none;
 		}
 	}
+
+	@media (max-width: @screen-sm-min) {
+		
+		&__item {
+			display: table;
+			width: 100%;
+		}
+
+		&__photoBox {
+			display: table-cell;
+			vertical-align: top;
+			height: 165px;
+			width: 125px;
+			
+		}
+
+		&__data {
+			display: table-cell;
+			padding-left: 20px;
+			vertical-align: top;
+			
+		}
+		
+	}
 }
