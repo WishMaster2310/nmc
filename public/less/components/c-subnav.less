@@ -53,6 +53,11 @@
 		&:last-child {
 			border-bottom-color: transparent;
 		}
+
+		&.--is-active + .c-subnav__subitems {
+			display: block;
+			
+		}
 	}
 
 	a&__link:hover {
@@ -88,17 +93,19 @@
 			border-radius: 2px;
 
 		}
+
+	
 		
 	}
 
 	@media (max-width: @screen-md-min) {
-		display: block;
-		
+		display: none;
 		position: static;
 
 		&__container {
 			padding: 0;
 			box-shadow: none;
+			background-color: transparent;
 		}
 
 		&__row {
@@ -110,6 +117,22 @@
 		&__col {
 			display: block;
 			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		&__subitems {
+			display: none;
+			
 		}
   }
+}
+
+@media (max-width: @screen-md-min) {
+	.--is-active {
+		.c-subnav {
+			display: block;
+			
+		}
+	}
 }

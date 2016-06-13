@@ -36,6 +36,14 @@
 		margin-top: 5px;
 	}
 
+	&__unit-inline {
+		align-self: center;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
 	&__capcha {
 		img {
 			max-width: 100%;
@@ -50,11 +58,30 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+	}
+
+	&--inline &__control {
+		
+		
 	}
 
 	&--inline &__control {
 		margin-left: 8px;
 		margin-right: 8px;
+		width: auto;
+		max-width: 160px;
+	}
+
+	@media (max-width: @screen-sm-min) {
+		&--inline {
+			display: block;
+		}
+		
+		&__unit-inline {
+			margin-bottom: 10px;
+			width: 100%;
+		}
 	}
 }

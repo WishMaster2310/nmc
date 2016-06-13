@@ -130,8 +130,27 @@ $(function () {
 		nmcApp.smallTab(this);
 	});
 
-	$('.c-burger').on('click', function() {
+	$('.c-burger, .c-header__close').on('click', function() {
 		$('.c-header').toggleClass('c-header--active')
 		$('body').toggleClass('body--on-menu-open')
+	});
+
+	$('.c-header__menu-item').on('click', function(e) {
+		var that = $(this);
+		if (that.attr('href')) {
+			return true
+		}
+		if($(e.target).closest('.c-subnav').length > 0) {
+			return
+		}
+		that.toggleClass('--is-active')
+	});
+
+	$('.c-subnav__link').on('click', function() {
+		var that = $(this);
+		if (that.attr('href')) {
+			return true
+		}
+		that.toggleClass('--is-active')
 	})
 });

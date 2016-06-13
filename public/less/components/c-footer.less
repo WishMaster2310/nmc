@@ -27,7 +27,8 @@
 		}
 
 		&--3 {
-			text-align: right;
+			//text-align: right;
+			padding-left: 20px;
 			
 		}
 	}
@@ -113,6 +114,24 @@
 		
 	}
 
+	&__special-link {
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-size: 14px;
+		color: @secondary-color;
+
+
+		.c-icon {
+			margin-right: 8px;
+			vertical-align: middle;
+			margin-top: -2px;
+			
+		}
+
+	}
+
 	@media  (max-width: @screen-md-min) {
 
 		&__row {
@@ -124,6 +143,8 @@
 		}
 
 		&__col {
+			display: block;
+			
 			width: 50%;
 			padding: 0 15px;
 			margin-bottom: 10px;

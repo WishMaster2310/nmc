@@ -135,8 +135,6 @@
 			text-transform: uppercase;
 			color: @secondary-color;
 			
-			
-
 			&:first-child {
 				margin-left: 0;
 			}
@@ -149,8 +147,50 @@
 			&--active {
 				font-weight: 600;
 			}
+
+			&--mobyle {
+				display: none;
+				
+			}
 			
 		}
+	}
+
+	&__controls {
+		display: none;
+	}
+
+	&__close {
+		width: 40px;
+		height: 40px;
+		background-color: #909090;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+
+		&:before {
+			content: "×";
+			font-family: Arial, sans-serif;
+			font-size: 40px;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 0px;
+			height: 100%;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			color: #fff;
+			line-height: 40px;
+			display: block;
+			vertical-align: top;
+			
+			
+		}
+	}
+
+	&__controls {
+		height: 50px;
 	}
 
 	@media (min-width: @screen-md) {
@@ -158,7 +198,6 @@
 
 		&__menu-item:hover &__submenu {
 			display: block;
-			
 		}
 	}
 
@@ -179,9 +218,16 @@
 		position: relative;
 		overflow: hidden;
 
+		&__controls {
+			display: block;
 
+			.c-header__userblock {
+				padding-top: 11px;
+				
+			}
+			
+		}
 		&--active &__topline {
-			transform: translateX(-300px)
 		}
 
 		&--active &__navline {
@@ -197,11 +243,17 @@
 				text-align: left;
 				border-radius: 0;
 				margin-bottom: 10px;
-				border-color: #eeeeee;
+				border-color: darken(#eeeeee, 20%);
 				user-select: none;
 				-webkit-user-select: none;
 				margin-left: 0;
-				padding: 10px 10px 10px 20px;
+				padding: 10px 10px 10px 10px;
+				background-color: #fff;
+
+				&--mobule {
+					display: block;
+					
+				}
 			}
 		}	
 
@@ -216,13 +268,12 @@
 			position: fixed;
 			height: 100%;
 			border: 1px solid #EFEFEF;
-			box-shadow: -11px 0px 18px -15px #000;
 			top: 0;
 			width: 280px;
 			left: 100%;
 			z-index: 10;
 			padding: 10px 0 10px 0;
-			background-color: #fff;
+			background-color: #eee;
 			overflow-y: auto;
 			
 			.l-container {
@@ -247,17 +298,15 @@
   }
 
   @media (max-width: @screen-sm-min) {
-		padding-top: 30px;
   	&__userblock {
-  		position: absolute;
-  		top: 0;
-  		right: 0;
-  		left: 0;
-  		margin-bottom: 0;
-  		padding: 5px 10px;
-  		height: 30px;
-  		overflow: hidden;
-  		background-color: #eee;
+  		display: none;
+  		
+  	}
+
+  	&__controls &__userblock {
+  		display: block;
+  		padding-top: 11px;
+  		
   	}
 
 
@@ -304,8 +353,8 @@
 
   		&--menu {
   			position: absolute;
-  			right: 0;
-  			top: 25px;
+  			right: 10px;
+  			top: 15px;
   			width: 40px;
   			height: 40px;
   			padding-left: 0;
