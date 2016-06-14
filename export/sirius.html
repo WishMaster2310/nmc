@@ -343,22 +343,52 @@
 
             <script>
               $(function() {
-                var data = [
-                  [0, 3],
-                  [4, 8],
-                  [8, 5],
-                  [9, 13],
-                  [11, 4],
-                  [12, 13]
-                ];
-                var data2 = [
-                  [0, 1],
-                  [4, 2],
-                  [8, 3],
-                  [9, 1],
-                  [2, 4],
-                  [3, 13]
-                ];
+              var data = [
+                [1462381200000, 1230.34],
+                [1462467600000, 1230.06],
+                [1462554000000, 1231.38],
+                [1462899600000, 1232.76],
+                [1462986000000, 1232.73],
+                [1463072400000, 1233.62],
+                [1463158800000, 1233.9],
+                [1463418000000, 1234.8],
+                [1463504400000, 1235.1],
+                [1463590800000, 1235.39],
+                [1463677200000, 1235.73],
+                [1463763600000, 1235.81],
+                [1464022800000, 1236.82],
+                [1464109200000, 1236.92],
+                [1464195600000, 1237.43],
+                [1464282000000, 1237.67],
+                [1464368400000, 1237.75],
+                [1464627600000, 1238.64],
+                [1464714000000, 1238.36],
+                [1464800400000, 1238.66],
+                [1464886800000, 1239.79],
+              ];
+              var data2 = [
+                [1462381200000, 12310294.85],
+                [1462467600000, 12307467.03],
+                [1462554000000, 12320740.89],
+                [1462899600000, 12334543.31],
+                [1462986000000, 12334161.53],
+                [1463072400000, 12343158.83],
+                [1463158800000, 12345899.41],
+                [1463418000000, 12354879.15],
+                [1463504400000, 12357905.86],
+                [1463590800000, 12360831.12],
+                [1463677200000, 12364248.91],
+                [1463763600000, 12365010.62],
+                [1464022800000, 12375084.05],
+                [1464109200000, 12376182.35],
+                [1464195600000, 12381210.19],
+                [1464282000000, 12383621.06],
+                [1464368400000, 12384449.32],
+                [1464627600000, 12393312.83],
+                [1464714000000, 12390504.44],
+                [1464800400000, 12393522.43],
+                [1464886800000, 12404878.54],
+              ];
                 var chartOpts = {
                   colors: ["#f9d532"],
                   series: {
@@ -366,24 +396,71 @@
                   },
                   grid: {
                     borderWidth: 1,
-                    color: "#dedede"
+                    color: "#dedede",
+                    hoverable: true
                   },
                   xaxis: {
-                    color: "#dedede"
+                    color: "#dedede",
+                    mode: "time",
+                    timeformat: "%d.%m"
+              
                   },
                   yaxis: {
                     color: "#dedede"
                   }
                 }
               
+              
+              
+              
                 nmcApp.getShareValue = function() {
                   $('#plotHiddenCharts').fadeIn();
-                  $.plot("#plot003", [data], chartOpts);
-                  $.plot("#plot004", [data2], chartOpts);
+                  var plot1 = $('#plot003');
+                  var plot2 = $('#plot004');
+                  var plot1Offset = plot1.offset();
+                  var plot2Offset = plot2.offset();
+                  var plotTip1, plotTip2;
+              
+                  plotTip1 = document.createElement('div');
+                  plotTip2 = document.createElement('div');
+                  plotTip1.className = plotTip2.className ="c-plot__tip";
+              
+                  $.plot(plot1, [data], chartOpts);
+                  $.plot(plot2, [data2], chartOpts);
+              
+                  $('body').append(plotTip1,plotTip2);
+                  plot1.bind("plothover", function (event, pos, item) {
+                    if (!item) {return}
+                    var x = Math.ceil(pos.x);
+                    var str = 'Дата: ' + moment(x).format('MM.DD.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
+                    $(plotTip1).text(str);
+                    $(plotTip1).css({
+                      display: 'block',
+                      top: item.pageY,
+                      left: item.pageX
+                    });
+                  })
+                    .bind('mouseleave', function() {
+                      $(plotTip1).hide();
+                    });
+              
+                  plot2.bind("plothover", function (event, pos, item) {
+                    if (!item) {return}
+                    var x = Math.ceil(pos.x);
+                    var str = 'Дата: ' + moment(x).format('MM.DD.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
+                    $(plotTip2).text(str);
+                    $(plotTip2).css({
+                      display: 'block',
+                      top: item.pageY,
+                      left: item.pageX
+                    });
+                  })
+                    .bind('mouseleave', function() {
+                      $(plotTip2).hide();
+                    });
                 }
               })
             </script>
-
           </div>
           <div class="c-tabs__unit" id="nmc_tab_structure">
             <div class="c-wysiwyg">
