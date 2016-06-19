@@ -139,13 +139,13 @@ var data2 = [
   var chartOpts = {
     colors: ["#f9d532"],
     series: {
-      shadowSize: 0
+      shadowSize: 3
     },
     grid: {
       borderWidth: 1,
       color: "#dedede",
-      hoverable: true,
-      backgroundColor: 'rgba(248, 206, 19, 0.2)'
+      hoverable: true
+      //backgroundColor: 'rgba(248, 206, 19, 0.2)'
     },
     xaxis: {
       color: "#dedede",
@@ -180,7 +180,7 @@ var data2 = [
     plot1.bind("plothover", function (event, pos, item) {
       if (!item) {return}
       var x = Math.ceil(pos.x);
-      var str = 'Дата: ' + moment(x).format('MM.DD.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
+      var str = 'Дата: ' + moment(x).format('DD.MM.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
       $(plotTip1).text(str);
       $(plotTip1).css({
         display: 'block',
@@ -195,7 +195,7 @@ var data2 = [
     plot2.bind("plothover", function (event, pos, item) {
       if (!item) {return}
       var x = Math.ceil(pos.x);
-      var str = 'Дата: ' + moment(x).format('MM.DD.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
+      var str = 'Дата: ' + moment(x).format('DD.MM.YY hh:mm') + "\nЗначение: " + pos.y.toFixed(2);
       $(plotTip2).text(str);
       $(plotTip2).css({
         display: 'block',
