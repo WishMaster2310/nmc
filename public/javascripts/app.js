@@ -121,7 +121,8 @@ $(function () {
 	});
 
 	$('.j-datepicker').pickmeup({
-		format: 'd-m-Y'
+		format: 'd-m-Y',
+		hide_on_select: true
 	});
 
 	// smalltab
